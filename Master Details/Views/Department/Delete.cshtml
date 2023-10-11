@@ -1,0 +1,32 @@
+﻿@model Master_Details.Models.Department
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+
+<h1 class="text-center bg-danger">Delete Information</h1>
+
+<table class="table table-bordered table-striped">
+    <thead class="text-center">
+        <tr>
+            <th>@Html.DisplayNameFor(x => x.DepartmentId)</th>
+            <th>@Html.DisplayNameFor(x => x.DepartmentName)</th>
+            <th>@Html.DisplayNameFor(x => x.DoctorName)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Html.DisplayFor(x => x.DepartmentId)</td>
+            <td>@Html.DisplayFor(x => x.DepartmentName)</td>
+            <td>@Html.DisplayFor(x => x.DoctorName)</td>
+        </tr>
+    </tbody>
+</table>
+@using (Html.BeginForm()) { 
+    <div class="d-flex justify-content-between">
+        <a href="@Url.Action("Index", "Department")" class="btn btn-secondary btn-sm">Back to List</a>
+        <input type="submit" value="Delete" class="btn btn-danger btn-sm" />
+    </div>
+}
+
+

@@ -5,6 +5,9 @@
 }
 
 <h1 class="text-center">Department Information</h1>
+<div class="d-flex justify-content-end">
+    <a href="@Url.Action("Create","Department")" class="btn btn-primary btn-sm mb-2"><i class="fa fa-plus-circle"></i> Add Department</a>
+</div>
 <table class="table table-bordered table-striped">
     <thead class="text-center">
         <tr>
@@ -21,7 +24,10 @@
                     <td>@Html.DisplayFor(x => item.DepartmentId)</td>
                     <td>@Html.DisplayFor(x => item.DepartmentName)</td>
                     <td>@Html.DisplayFor(x => item.DoctorName)</td>
-                    <td></td>
+                    <td>
+                        <a href="@Url.Action("Edit","Department", new {id = item.DepartmentId})" class="btn btn-success btn-sm"><i class="fa fa-edit"></i> Edit</a>
+                        <a href="@Url.Action("Delete","Department", new {id = item.DepartmentId})" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
+                    </td>
                 </tr>
             }
     </tbody>
