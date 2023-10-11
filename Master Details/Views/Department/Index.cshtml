@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Master_Details.Models.Department>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+
+<h1 class="text-center">Department Information</h1>
+<table class="table table-bordered table-striped">
+    <thead class="text-center">
+        <tr>
+            <th>@Html.DisplayNameFor(x => x.DepartmentId)</th>
+            <th>@Html.DisplayNameFor(x => x.DepartmentName)</th>
+            <th>@Html.DisplayNameFor(x => x.DoctorName)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(x => item.DepartmentId)</td>
+                    <td>@Html.DisplayFor(x => item.DepartmentName)</td>
+                    <td>@Html.DisplayFor(x => item.DoctorName)</td>
+                    <td></td>
+                </tr>
+            }
+    </tbody>
+</table>
+
