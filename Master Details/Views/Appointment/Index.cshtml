@@ -12,8 +12,8 @@
 <div>
     @foreach (var patient in Model)
     {
-        <div class="card mb-3">
-            <div class="card-header d-flex justify-content-between">
+        <div class="card mb-4">
+            <div class="card-header bg-info d-flex justify-content-between">
                 <div>
                     <img src="@patient.Picture" width="32" />
                     <label class="me-2"><b>Patient Name : </b>@Html.DisplayFor(x => patient.PatientName)</label>
@@ -24,7 +24,7 @@
                     <a href="@Url.Action("Delete", "Appointment", new {id=patient.PatientId})" id="btnDelete" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Delete</a>
                 </div>
             </div>
-            <div class="card-body">
+            <div class="card-body bg-secondary">
                 <table class="table table-bordered table-striped table-sm">
                     <thead class="text-center table-primary">
                         <tr>

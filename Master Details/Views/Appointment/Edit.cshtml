@@ -1,0 +1,129 @@
+﻿@model Master_Details.Models.ViewModels.AppointmentVM
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/layout.cshtml";
+}
+
+<h1 class="text-center">Edit Your Appointment</h1>
+
+@using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "msg", OnComplete = "clearAll" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.PatientId);
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header  text-center display-6 bg-secondary text-light">
+                    Patient Information
+                </div>
+                <div class="card-body">
+                    <div class="row mb-2">
+                        @Html.LabelFor(x => x.PatientName, htmlAttributes: new { @class = "col-form-label col-3" })
+
+                        <div class="col-7">
+                            @Html.TextBoxFor(x => x.PatientName, new { @class = "form-control" })
+                        </div>
+                        <div class="col-2">
+                            @Html.ValidationMessageFor(x => x.PatientName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        @Html.LabelFor(x => x.BirthDate, htmlAttributes: new { @class = "col-form-label col-3" })
+
+                        <div class="col-7">
+                            @Html.EditorFor(x => x.BirthDate, "{0:yyyy-MM-dd}", new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                        </div>
+                        <div class="col-2">
+                            @Html.ValidationMessageFor(x => x.BirthDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        @Html.LabelFor(x => x.Age, htmlAttributes: new { @class = "col-form-label col-3" })
+
+                        <div class="col-7">
+                            @Html.TextBoxFor(x => x.Age, new { @class = "form-control", type = "number" })
+                        </div>
+                        <div class="col-2">
+                            @Html.ValidationMessageFor(x => x.Age, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        @Html.LabelFor(x => x.PictureFile, htmlAttributes: new { @class = "col-form-label col-3" })
+
+                        <div class="col-7">
+                            @Html.TextBoxFor(x => x.PictureFile, new { @class = "form-control", type = "file" })
+                        </div>
+                        <div class="col-2">
+                            @Html.ValidationMessageFor(x => x.PictureFile, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        @Html.LabelFor(x => x.MaritalStatus, htmlAttributes: new { @class = "col-form-label col-3" })
+                        <div class="col-7" style="margin-top:10px;">
+                            <div class="form-check p-0">
+                                @Html.CheckBoxFor(x => x.MaritalStatus)
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            @Html.ValidationMessageFor(x => x.MaritalStatus, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header  text-center display-6 bg-secondary text-light">
+                    Appointment Information
+                </div>
+                <div class="card-body">
+                    <div class="row mb-2">
+                        @Html.LabelFor(x => x.AppointmentDate, htmlAttributes: new { @class = "col-form-label col-3" })
+
+                        <div class="col-7">
+                            @Html.EditorFor(x => x.AppointmentDate, "{0:yyyy-MM-dd}", new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                        </div>
+                        <div class="col-2">
+                            @Html.ValidationMessageFor(x => x.AppointmentDate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="row mb-2">
+                        <label class="col-form-label col-3">Department</label>
+                        <div class="col-8">
+                            @Html.Action("AddNewDepartment", "Appointment", new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row mb-2">
+        <div id="msg">
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="d-flex justify-content-between mt-2">
+            <a href="@Url.Action("Index", "Appointment")" class="btn btn-secondary btn-sm">Back to List</a>
+            <input type="submit" value="Update" class="btn btn-success btn-sm" />
+        </div>
+    </div>
+}
+
+
+@section scripts
+{
+    <script>
+        $("#form0").attr("enctype", "multipart/form-data")
+        function clearAll() {
+
+            $("#form0").trigger("reset");
+        }
+    </script>
+
+}
