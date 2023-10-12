@@ -23,6 +23,7 @@ namespace Master_Details.Models
         public int PatientId { get; set; }
         public string PatientName { get; set; }
         public int Age { get; set; }
+        public System.DateTime BirthDate { get; set; }
         public Nullable<bool> MaritalStatus { get; set; }
         public System.DateTime AppointmentDate { get; set; }
         public string Picture { get; set; }

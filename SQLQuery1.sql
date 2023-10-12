@@ -9,6 +9,7 @@ CREATE TABLE Patients
 	PatientId INT PRIMARY KEY IDENTITY,
 	PatientName VARCHAR(50) NOT NULL,
 	Age INT NOT NULL,
+	BirthDate DATE NOT NULL,
 	MaritalStatus BIT,
 	AppointmentDate DATE NOT NULL,
 	Picture VARCHAR(MAX)

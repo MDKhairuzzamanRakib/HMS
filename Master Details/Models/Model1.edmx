@@ -28,6 +28,7 @@
           <Property Name="PatientId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PatientName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Age" Type="int" Nullable="false" />
+          <Property Name="BirthDate" Type="date" Nullable="false" />
           <Property Name="MaritalStatus" Type="bit" />
           <Property Name="AppointmentDate" Type="date" Nullable="false" />
           <Property Name="Picture" Type="varchar(max)" />
@@ -100,6 +101,7 @@
           <Property Name="PatientId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="PatientName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Age" Type="Int32" Nullable="false" />
+          <Property Name="BirthDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="MaritalStatus" Type="Boolean" />
           <Property Name="AppointmentDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
@@ -172,6 +174,7 @@
                 <ScalarProperty Name="PatientId" ColumnName="PatientId" />
                 <ScalarProperty Name="PatientName" ColumnName="PatientName" />
                 <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
                 <ScalarProperty Name="MaritalStatus" ColumnName="MaritalStatus" />
                 <ScalarProperty Name="AppointmentDate" ColumnName="AppointmentDate" />
                 <ScalarProperty Name="Picture" ColumnName="Picture" />
