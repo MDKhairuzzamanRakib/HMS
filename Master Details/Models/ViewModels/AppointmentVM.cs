@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace Master_Details.Models.VireModels
+namespace Master_Details.Models.ViewModels
 {
     public class AppointmentVM
     {
