@@ -156,6 +156,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AppointmentController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -223,6 +224,7 @@
     <Content Include="Views\Department\Delete.cshtml" />
     <Content Include="Views\Shared\_success.cshtml" />
     <Content Include="Views\Shared\_error.cshtml" />
+    <Content Include="Views\Appointment\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
