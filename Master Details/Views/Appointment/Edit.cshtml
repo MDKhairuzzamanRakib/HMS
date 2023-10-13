@@ -92,7 +92,10 @@
                     <div class="row mb-2">
                         <label class="col-form-label col-3">Department</label>
                         <div class="col-8">
-                            @Html.Action("AddNewDepartment", "Appointment", new { @class = "form-control" })
+                            @foreach (var item in Model.DepartmentList)
+                            {
+                                @Html.Action("AddNewDepartment", "Appointment", new { id = item });
+                            }
                         </div>
                     </div>
                 </div>

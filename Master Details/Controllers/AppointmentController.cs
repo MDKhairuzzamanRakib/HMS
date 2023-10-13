@@ -103,6 +103,7 @@ namespace Master_Details.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 Patient patient = new Patient()
                 {
                     PatientId = appointmentVM.PatientId,
@@ -114,10 +115,10 @@ namespace Master_Details.Controllers
                 };
 
                 HttpPostedFileBase file = appointmentVM.PictureFile;
-                string filePath = appointmentVM.Picture;
+                //string filePath = appointmentVM.Picture;
                 if (file != null)
                 {
-                    filePath = Path.Combine("/Images", Guid.NewGuid().ToString() + Path.GetExtension(file.FileName));
+                    string filePath = Path.Combine("/Images", Guid.NewGuid().ToString() + Path.GetExtension(file.FileName));
                     file.SaveAs(Server.MapPath(filePath));
                     patient.Picture = filePath;
                 }
@@ -149,6 +150,43 @@ namespace Master_Details.Controllers
             return PartialView("_error");
         }
 
+        public ActionResult Delete(int? id)
+        {
+            Patient patient = db.Patients.First(x=>x.PatientId == id);
+            var patientDep = db.Appointments.Where(x=>x.PatientId == id).ToList();
+
+            AppointmentVM appointmentVM = new AppointmentVM()
+            {
+                PatientId = patient.PatientId,
+                PatientName = patient.PatientName,
+                Age = patient.Age,
+                BirthDate = patient.BirthDate,
+                Picture = patient.Picture,
+                MaritalStatus = patient.MaritalStatus,
+                AppointmentDate = patient.AppointmentDate
+            };
+            if (patientDep.Count()>0)
+            {
+                foreach (var item in patientDep)
+                {
+                    appointmentVM.DepartmentList.Add(item.DepartmentId);
+                }
+            }
+            return View(appointmentVM);
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            Patient patient = db.Patients.Find(id);
+            if (patient == null)
+            {
+                return HttpNotFound();
+            }
+            db.Patients.Remove(patient);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
     }
 }

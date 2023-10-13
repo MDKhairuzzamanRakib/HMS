@@ -1,14 +1,12 @@
 ﻿@model Master_Details.Models.ViewModels.AppointmentVM
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/layout.cshtml";
 }
 
-<h1 class="text-center">Get an Appointment</h1>
+<h1 class="text-center p-2 bg-danger text-light">Delete Your Appointment</h1>
 
-@using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "msg", OnComplete = "clearAll" }))
-{
-    @Html.AntiForgeryToken()
+
     <div class="row">
         <div class="col-6">
             <div class="card">
@@ -30,7 +28,7 @@
                         @Html.LabelFor(x => x.BirthDate, htmlAttributes: new { @class = "col-form-label col-3" })
 
                         <div class="col-7">
-                            @Html.TextBoxFor(x => x.BirthDate, new { @class = "form-control", type = "date" })
+                            @Html.EditorFor(x => x.BirthDate, "{0:yyyy-MM-dd}", new { htmlAttributes = new { @class = "form-control", type = "date" } })
                         </div>
                         <div class="col-2">
                             @Html.ValidationMessageFor(x => x.BirthDate, "", new { @class = "text-danger" })
@@ -81,7 +79,7 @@
                         @Html.LabelFor(x => x.AppointmentDate, htmlAttributes: new { @class = "col-form-label col-3" })
 
                         <div class="col-7">
-                            @Html.TextBoxFor(x => x.AppointmentDate, new { @class = "form-control", type = "date" })
+                            @Html.EditorFor(x => x.AppointmentDate, "{0:yyyy-MM-dd}", new { htmlAttributes = new { @class = "form-control", type = "date" } })
                         </div>
                         <div class="col-2">
                             @Html.ValidationMessageFor(x => x.AppointmentDate, "", new { @class = "text-danger" })
@@ -91,7 +89,10 @@
                     <div class="row mb-2">
                         <label class="col-form-label col-3">Department</label>
                         <div class="col-8">
-                            @Html.Action("AddNewDepartment", "Appointment")
+                            @foreach (var item in Model.DepartmentList)
+                            {
+                                @Html.Action("AddNewDepartment", "Appointment", new { id = item });
+                            }
                         </div>
                     </div>
                 </div>
@@ -99,30 +100,10 @@
         </div>
     </div>
 
-
-    <div class="row mb-2">
-        <div id="msg">
-
-        </div>
-    </div>
-
     <div class="row">
         <div class="d-flex justify-content-between mt-2">
             <a href="@Url.Action("Index", "Appointment")" class="btn btn-secondary btn-sm">Back to List</a>
-            <input type="submit" value="Save" class="btn btn-success btn-sm" />
+            <input type="submit" value="Delete" class="btn btn-success btn-sm" />
         </div>
     </div>
-}
 
-
-@section scripts
-{
-    <script>
-        $("#form0").attr("enctype", "multipart/form-data")
-        function clearAll() {
-
-            $("#form0").trigger("reset");
-        }
-    </script>
-
-}
