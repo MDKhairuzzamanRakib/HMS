@@ -6,7 +6,10 @@
 
 <h1 class="text-center p-2 bg-danger text-light">Delete Your Appointment</h1>
 
-
+@using (Html.BeginForm("Delete", "Appointment", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.PatientId)
     <div class="row">
         <div class="col-6">
             <div class="card">
@@ -106,4 +109,5 @@
             <input type="submit" value="Delete" class="btn btn-success btn-sm" />
         </div>
     </div>
+}
 

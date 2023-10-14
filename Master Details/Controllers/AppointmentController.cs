@@ -49,7 +49,7 @@ namespace Master_Details.Controllers
                 HttpPostedFileBase file = appointmentVM.PictureFile;
                 if (file != null)
                 {
-                    string filePath = Path.Combine("/Images", Guid.NewGuid().ToString()+Path.GetExtension(file.FileName));
+                    string filePath = Path.Combine("/Images/", Guid.NewGuid().ToString()+Path.GetExtension(file.FileName));
 
                     file.SaveAs(Server.MapPath(filePath));
                     patient.Picture = filePath;
@@ -118,14 +118,14 @@ namespace Master_Details.Controllers
                 //string filePath = appointmentVM.Picture;
                 if (file != null)
                 {
-                    string filePath = Path.Combine("/Images", Guid.NewGuid().ToString() + Path.GetExtension(file.FileName));
+                    string filePath = Path.Combine("/Images/", Guid.NewGuid().ToString() + Path.GetExtension(file.FileName));
                     file.SaveAs(Server.MapPath(filePath));
                     patient.Picture = filePath;
                 }
-                else
-                {
-                    patient.Picture = Session["imgPath"].ToString();
-                }
+                //else
+                //{
+                //    patient.Picture = Session["imgPath"].ToString();
+                //}
 
                 var depEntry = db.Appointments.Where(x => x.PatientId == patient.PatientId).ToList();
                 foreach (var appointment in depEntry)
@@ -176,14 +176,15 @@ namespace Master_Details.Controllers
         }
 
         [HttpPost]
-        public ActionResult Delete(int id)
+        [ActionName("Delete")]
+        public ActionResult DoDelete(int? id)
         {
             Patient patient = db.Patients.Find(id);
             if (patient == null)
             {
                 return HttpNotFound();
             }
-            db.Patients.Remove(patient);
+            db.Entry(patient).State = EntityState.Deleted;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
