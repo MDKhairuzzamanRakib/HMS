@@ -14,13 +14,11 @@ namespace Hms.Identity.Models
         public string? RoleName { get; set; }
         public bool? CanEditProfile { get; set; }
         public int? EmpId { get; set; }
-        public string? BranchId { get; set; }
         public bool IsActive { get; set; }
         public string? CreatedBy { get; set; } = null!;
-        public DateTime? DateCreated { get; set; } = DateTime.Now;
-
+        public DateTime? DateCreated { get; set; }
         public string? LastModifiedBy { get; set; }
-        public DateTime? LastModifiedDate { get; set; } = DateTime.Now;
+        public DateTime? LastModifiedDate { get; set; }
         public string? InActiveBy { get; set; }
         public DateTime? InActiveDate { get; set; }
     }
