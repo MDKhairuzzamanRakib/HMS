@@ -81,7 +81,6 @@ namespace Hms.Identity.Services
                 Email = user.Email,
                 Username = user.UserName,
                 Role = roleName,
-                BranchId = user.BranchId,
                 EmpId = user.EmpId
             };
 
