@@ -6,6 +6,7 @@ import { Landing } from './app/pages/landing/landing';
 import { Notfound } from './app/pages/notfound/notfound';
 import { LoginComponent } from './app/pages/backend/authentication/login/login.component';
 import { AuthGuard } from './app/core/guard/auth.guard';
+import { HomePageComponent } from './app/pages/frontend/home-page/home-page.component';
 
 export const appRoutes: Routes = [
     {
@@ -22,6 +23,7 @@ export const appRoutes: Routes = [
     { path: 'landing', component: Landing },
     { path: 'notfound', component: Notfound },
     { path: 'login', component: LoginComponent },
+    { path: 'home', component: HomePageComponent },
     { path: 'auth', loadChildren: () => import('./app/pages/auth/auth.routes') },
     { path: '**', redirectTo: '/notfound' }
 ];

@@ -9,14 +9,11 @@ import { Popover, PopoverModule } from 'primeng/popover';
 import { AuthService } from '../../core/services/auth.service';
 
 @Component({
-    selector: 'app-topbar',
+    selector: 'home-topbar',
     standalone: true,
-    imports: [RouterModule, CommonModule, StyleClassModule, AppConfigurator, PopoverModule],
+    imports: [RouterModule, CommonModule, StyleClassModule, PopoverModule],
     template: ` <div class="layout-topbar">
         <div class="layout-topbar-logo-container">
-            <button class="layout-menu-button layout-topbar-action" (click)="layoutService.onMenuToggle()">
-                <i class="pi pi-bars"></i>
-            </button>
             <a class="layout-topbar-logo" routerLink="/">
                 <svg viewBox="0 0 54 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -44,70 +41,15 @@ import { AuthService } from '../../core/services/auth.service';
                 <button type="button" class="layout-topbar-action" (click)="toggleDarkMode()">
                     <i [ngClass]="{ 'pi ': true, 'pi-moon': layoutService.isDarkTheme(), 'pi-sun': !layoutService.isDarkTheme() }"></i>
                 </button>
-                <div class="relative">
-                    <button
-                        class="layout-topbar-action layout-topbar-action-highlight"
-                        pStyleClass="@next"
-                        enterFromClass="hidden"
-                        enterActiveClass="animate-scalein"
-                        leaveToClass="hidden"
-                        leaveActiveClass="animate-fadeout"
-                        [hideOnOutsideClick]="true"
-                    >
-                        <i class="pi pi-palette"></i>
-                    </button>
-                    <app-configurator />
-                </div>
             </div>
 
             <button class="layout-topbar-menu-button layout-topbar-action" pStyleClass="@next" enterFromClass="hidden" enterActiveClass="animate-scalein" leaveToClass="hidden" leaveActiveClass="animate-fadeout" [hideOnOutsideClick]="true">
                 <i class="pi pi-ellipsis-v"></i>
             </button>
-
-            <div class="layout-topbar-menu hidden lg:block">
-                <div class="layout-topbar-menu-content">
-                    <button type="button" class="layout-topbar-action">
-                        <i class="pi pi-calendar"></i>
-                        <span>Calendar</span>
-                    </button>
-                    <button type="button" class="layout-topbar-action">
-                        <i class="pi pi-inbox"></i>
-                        <span>Messages</span>
-                    </button>
-                    <button type="button" class="layout-topbar-action" (click)="toggle($event)">
-                        <i class="pi pi-user"></i>
-                        <span>Profile</span>
-                    </button>
-
-                    <p-popover #op>
-                        <div class="flex flex-col gap-4">
-                            <div>
-                                <!-- <span class="font-medium block mb-2">Team Members</span> -->
-                                <ul class="list-none p-0 m-0 flex flex-col">
-                                    <li class="flex items-center gap-2 px-2 py-3 hover:bg-emphasis cursor-pointer rounded-border">
-                                        <i class="pi pi-user"></i>
-                                        <span>Profile</span>
-                                    </li>
-                                    <li class="flex items-center gap-2 px-2 py-3 hover:bg-emphasis cursor-pointer rounded-border">
-                                        <i class="pi pi-cog"></i>
-                                        <span>Setting</span>
-                                    </li>
-                                    <li class="flex items-center gap-2 px-2 py-3 hover:bg-emphasis cursor-pointer rounded-border" (click)="logout()">
-                                        <i class="pi pi-sign-out"></i>
-                                        <span>Logout</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </p-popover>
-                </div>
-            </div>
         </div>
     </div>`
 })
-export class AppTopbar {
-    items!: MenuItem[];
-    @ViewChild('op') op!: Popover;
+export class HomeTopbar {
 
     constructor(public layoutService: LayoutService, private authService: AuthService, private router: Router) {}
 
@@ -115,15 +57,4 @@ export class AppTopbar {
         this.layoutService.layoutConfig.update((state) => ({ ...state, darkTheme: !state.darkTheme }));
     }
 
-    toggle(event: any) {
-        this.op.toggle(event);
-    }
-
-    logout(){
-        this.authService.logout().subscribe((res) => {
-            if (!res.success) {
-              this.router.navigate(['login']);
-            }
-        });
-    }
 }

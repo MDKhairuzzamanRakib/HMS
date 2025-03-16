@@ -11,10 +11,9 @@ import { ErrorInterceptor } from './app/core/interceptor/error.interceptor';
 export const appConfig: ApplicationConfig = {
     providers: [
         
-        provideHttpClient(withInterceptors([JwtInterceptor])),
         provideRouter(appRoutes, withInMemoryScrolling({ anchorScrolling: 'enabled', scrollPositionRestoration: 'enabled' }), withEnabledBlockingInitialNavigation()),
         provideHttpClient(withFetch()),
         provideAnimationsAsync(),
-        providePrimeNG({ theme: { preset: Aura, options: { darkModeSelector: '.app-dark' } } })
+        providePrimeNG({ theme: { preset: Aura, options: { darkModeSelector: '.app-dark' } } }),
     ]
 };
