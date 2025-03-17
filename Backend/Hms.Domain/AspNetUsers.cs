@@ -21,10 +21,11 @@ namespace Hms.Domain
         public bool PhoneNumberConfirmed { get; set; }
         public bool TwoFactorEnabled { get; set; }
         public string? PasswordHash { get; set; }
+        public DateTimeOffset? LockoutEnd { get; set; }
         public bool LockoutEnabled { get; set; } = true;
         public int AccessFailedCount { get; set; } = 0;
-        public int? EmpId { get; set; }
-        public bool IsActive { get; set; }
+        public int? UserType { get; set; }
+        public bool Status { get; set; }
         public bool? CanEditProfile { get; set; }
     }
 }
