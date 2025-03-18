@@ -13,6 +13,8 @@ namespace Hms.Domain
         public int? HotelId { get; set; }
         public int? RoomTypeId { get; set; }
         public int? Floor { get; set; }
+        public int? Adult { get; set; }
+        public int? Child { get; set; }
         public string? RoomNumber { get; set; }
         public string? Description { get; set; }
         public bool? RoomStatus { get; set; }

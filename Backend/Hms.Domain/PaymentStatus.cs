@@ -14,6 +14,9 @@ namespace Hms.Domain
         public int? BookingId { get; set; }
         public double? PaidAmmount { get; set; }
         public DateTime PaymentDate { get; set; }
+        public bool? Confirmation { get; set; }
+        public int? ConfirmedBy { get; set; }
+        public string? InvoiceNo { get; set; }
         public string? Remark { get; set; }
         public bool? Status { get; set; }
     }
