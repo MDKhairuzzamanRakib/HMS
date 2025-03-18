@@ -7,14 +7,22 @@ import { Notfound } from './app/pages/notfound/notfound';
 import { LoginComponent } from './app/pages/backend/authentication/login/login.component';
 import { AuthGuard } from './app/core/guard/auth.guard';
 import { HomePageComponent } from './app/pages/frontend/home-page/home-page.component';
+import { HomeLayout } from './app/layout/component/home.layout';
 
 export const appRoutes: Routes = [
+    {
+        path: '',
+        // component: HomeLayout,
+        children: [
+            { path: '',  loadChildren: () => import('./app/pages/frontend/frontend.routes') },
+        ]
+    },
     {
         path: '',
         component: AppLayout,
         canActivate: [AuthGuard],
         children: [
-            { path: '',  component: Dashboard },
+            { path: 'dashboard',  component: Dashboard },
             { path: 'uikit', canActivate: [AuthGuard], loadChildren: () => import('./app/pages/uikit/uikit.routes') },
             { path: 'documentation', canActivate: [AuthGuard], component: Documentation },
             { path: 'pages', canActivate: [AuthGuard], loadChildren: () => import('./app/pages/pages.routes') }
@@ -23,7 +31,6 @@ export const appRoutes: Routes = [
     { path: 'landing', component: Landing },
     { path: 'notfound', component: Notfound },
     { path: 'login', component: LoginComponent },
-    { path: 'home', component: HomePageComponent },
     { path: 'auth', loadChildren: () => import('./app/pages/auth/auth.routes') },
     { path: '**', redirectTo: '/notfound' }
 ];

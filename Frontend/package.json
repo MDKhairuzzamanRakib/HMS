@@ -26,6 +26,7 @@
     "@ng-bootstrap/ng-bootstrap": "^18.0.0",
     "@popperjs/core": "~2.11.8",
     "@primeng/themes": "^19.0.5",
+    "@tailwindcss/vite": "^4.0.14",
     "bootstrap": "^5.3.3",
     "chart.js": "4.4.2",
     "crypto-js": "^4.2.0",
