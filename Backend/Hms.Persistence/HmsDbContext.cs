@@ -1,4 +1,7 @@
-﻿using Hms.Domain;
+﻿using Hms.Domain.BasicSetup;
+using Hms.Domain.UserManage;
+using Hms.Persistence.Configurations;
+using Hms.Persistence.Configurations.BasicSetup;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -17,14 +20,9 @@ namespace Hms.Persistence
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<AspNetUsers>(entity =>
-            {
-                entity.HasKey(e => e.Id);
-            });
+            modelBuilder.ApplyConfiguration(new CountryConfiguration());
+            modelBuilder.ApplyConfiguration(new CityConfiguration());
 
-
-            modelBuilder.Entity<AspNetUserRoles>()
-            .HasKey(ur => new { ur.UserId, ur.RoleId });
 
             base.OnModelCreating(modelBuilder);
         }
@@ -32,6 +30,8 @@ namespace Hms.Persistence
         public virtual DbSet<AspNetRoles> AspNetRoles { get; set; } = null!;
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; } = null!;
         public virtual DbSet<AspNetUserRoles> AspNetUserRoles { get; set; } = null!;
+        public virtual DbSet<Country> Country { get; set; } = null!;
+        public virtual DbSet<City> City { get; set; } = null!;
 
 
     }

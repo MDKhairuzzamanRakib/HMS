@@ -18,4 +18,13 @@
 		<ProjectReference Include="..\Hms.Application\Hms.Application.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Configurations\GuestInfos\" />
+	  <Folder Include="Configurations\HotelInfos\" />
+	  <Folder Include="Configurations\OrganogramSetup\" />
+	  <Folder Include="Configurations\PaymentInfos\" />
+	  <Folder Include="Configurations\RoomInfos\" />
+	  <Folder Include="Configurations\UserManage\" />
+	</ItemGroup>
+
 </Project>
