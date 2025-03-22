@@ -4,6 +4,7 @@ using Hms.Application.Contracts.Persistence;
 using Hms.Application.Exceptions;
 using Hms.Application.Models.Identity;
 using Hms.Application.Responses;
+using Hms.Domain.UserManage;
 using Hms.Identity.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -24,13 +25,13 @@ namespace Hms.Identity.Services
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly IHmsRepository<Domain.AspNetUsers> _aspNetUserRepository;
-        private readonly IHmsRepository<Domain.AspNetUserRoles> _aspNetUserRolesRepository;
-        private readonly IHmsRepository<Domain.AspNetRoles> _aspNetRolesRepository;
+        private readonly IHmsRepository<AspNetUsers> _aspNetUserRepository;
+        private readonly IHmsRepository<AspNetUserRoles> _aspNetUserRolesRepository;
+        private readonly IHmsRepository<AspNetRoles> _aspNetRolesRepository;
         private readonly JwtSettings _jwtSettings;
         public AuthService(RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager,
         IOptions<JwtSettings> jwtSettings,
-            SignInManager<ApplicationUser> signInManager, IHmsRepository<Domain.AspNetUsers> aspNetUserRepository, IHmsRepository<Domain.AspNetUserRoles> aspNetUserRolesRepository, IHmsRepository<Domain.AspNetRoles> aspNetRolesRepository)
+            SignInManager<ApplicationUser> signInManager, IHmsRepository<AspNetUsers> aspNetUserRepository, IHmsRepository<AspNetUserRoles> aspNetUserRolesRepository, IHmsRepository<AspNetRoles> aspNetRolesRepository)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -106,7 +107,7 @@ namespace Hms.Identity.Services
 
             var existingUser = await _userManager.FindByNameAsync(request.UserName);
 
-            //IQueryable<Domain.AspNetUsers> pNoFound = _aspNetUserRepository.Where(x => x.PNo.ToLower() == request.PNo.ToLower());
+            //IQueryable<AspNetUsers> pNoFound = _aspNetUserRepository.Where(x => x.PNo.ToLower() == request.PNo.ToLower());
 
             //var existingEmail = await _userManager.FindByEmailAsync(request.Email);
 
@@ -210,11 +211,11 @@ namespace Hms.Identity.Services
                 return response;
             }
 
-            IQueryable<Domain.AspNetUsers> existingUser = _aspNetUserRepository.Where(x => x.UserName.ToLower() == request.UserName.ToLower() && x.Id != request.Id);
+            IQueryable<AspNetUsers> existingUser = _aspNetUserRepository.Where(x => x.UserName.ToLower() == request.UserName.ToLower() && x.Id != request.Id);
 
-            //IQueryable<Domain.AspNetUsers> pNoFound = _aspNetUserRepository.Where(x => x.PNo.ToLower() == request.PNo.ToLower() && x.Id != request.Id);
+            //IQueryable<AspNetUsers> pNoFound = _aspNetUserRepository.Where(x => x.PNo.ToLower() == request.PNo.ToLower() && x.Id != request.Id);
 
-            //IQueryable<Domain.AspNetUsers> existingEmail = _aspNetUserRepository.Where(x => x.Email.ToLower() == request.Email.ToLower() && x.Id != request.Id);
+            //IQueryable<AspNetUsers> existingEmail = _aspNetUserRepository.Where(x => x.Email.ToLower() == request.Email.ToLower() && x.Id != request.Id);
 
             if (existingUser.Any())
             {

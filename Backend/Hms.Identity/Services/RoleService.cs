@@ -1,8 +1,9 @@
 ﻿using Hms.Application.Contracts.Identity;
 using Hms.Application.Contracts.Persistence;
-using Hms.Application.DTOs.AspNetRoles;
+using Hms.Application.DTOs.UserManage.AspNetRoles;
 using Hms.Application.Models.Identity;
 using Hms.Application.Responses;
+using Hms.Domain.UserManage;
 using Hms.Identity.Models;
 using Hms.Shared.Models;
 using Microsoft.AspNetCore.Identity;
@@ -21,13 +22,13 @@ namespace Hms.Identity.Services
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly IHmsRepository<Domain.AspNetUsers> _aspNetUserRepository;
-        private readonly IHmsRepository<Domain.AspNetUserRoles> _aspNetUserRolesRepository;
-        private readonly IHmsRepository<Domain.AspNetRoles> _aspNetRolesRepository;
+        private readonly IHmsRepository<AspNetUsers> _aspNetUserRepository;
+        private readonly IHmsRepository<AspNetUserRoles> _aspNetUserRolesRepository;
+        private readonly IHmsRepository<AspNetRoles> _aspNetRolesRepository;
         private readonly JwtSettings _jwtSettings;
         public RoleService(RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager,
         IOptions<JwtSettings> jwtSettings,
-            SignInManager<ApplicationUser> signInManager, IHmsRepository<Domain.AspNetUsers> aspNetUserRepository, IHmsRepository<Domain.AspNetUserRoles> aspNetUserRolesRepository, IHmsRepository<Domain.AspNetRoles> aspNetRolesRepository)
+            SignInManager<ApplicationUser> signInManager, IHmsRepository<AspNetUsers> aspNetUserRepository, IHmsRepository<AspNetUserRoles> aspNetUserRolesRepository, IHmsRepository<AspNetRoles> aspNetRolesRepository)
         {
             _userManager = userManager;
             _roleManager = roleManager;

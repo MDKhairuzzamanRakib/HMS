@@ -7,8 +7,28 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Folder Include="DTOs\BasicSetup\" />
+		<Folder Include="DTOs\BookingInfos\" />
+		<Folder Include="DTOs\EmployeeInfos\" />
+		<Folder Include="DTOs\GuestInfos\" />
+		<Folder Include="DTOs\HotelInfos\" />
+		<Folder Include="DTOs\OrganogramSetup\" />
+		<Folder Include="DTOs\PaymentInfos\" />
+		<Folder Include="DTOs\RoomInfos\" />
 		<Folder Include="Enum\" />
-		<Folder Include="Features\" />
+		<Folder Include="Features\Common\Handlers\Commands\" />
+		<Folder Include="Features\Common\Handlers\Queries\" />
+		<Folder Include="Features\Common\Requests\Commands\" />
+		<Folder Include="Features\Common\Requests\Queries\" />
+		<Folder Include="Features\UserManage\" />
+		<Folder Include="Features\BasicSetup\" />
+		<Folder Include="Features\BookingInfos\" />
+		<Folder Include="Features\EmployeeInfos\" />
+		<Folder Include="Features\GuestInfos\" />
+		<Folder Include="Features\HotelInfos\" />
+		<Folder Include="Features\OrganogramSetup\" />
+		<Folder Include="Features\PaymentInfos\" />
+		<Folder Include="Features\RoomInfos\" />
 		<Folder Include="Helpers\" />
 	</ItemGroup>
 
