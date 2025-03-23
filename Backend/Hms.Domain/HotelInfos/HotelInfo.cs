@@ -34,6 +34,7 @@ namespace Hms.Domain.HotelInfos
         public bool Status { get; set; }
 
         public virtual ICollection<EmpJobDetail>? EmpJobDetail { get; set; }
+        public virtual ICollection<EmpJobDetail>? FirstEmpJobDetail { get; set; }
         public virtual CategoryType? CategoryType { get; set; }
         public virtual Country? Country { get; set; }
         public virtual City? City { get; set; }

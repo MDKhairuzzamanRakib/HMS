@@ -43,22 +43,22 @@ namespace Hms.Persistence.Configurations.EmployeeInfos
                 .HasConstraintName("FK_EmpJobDetail_Designation");
 
             builder.HasOne(d => d.FirstHotelInfo)
-                .WithMany(p => p.EmpJobDetail)
+                .WithMany(p => p.FirstEmpJobDetail)
                 .HasForeignKey(d => d.FirstHotelId)
                 .HasConstraintName("FK_EmpJobDetail_FirstHotelInfo");
 
             builder.HasOne(d => d.FirstDepartment)
-                .WithMany(p => p.EmpJobDetail)
+                .WithMany(p => p.FirstEmpJobDetail)
                 .HasForeignKey(d => d.FirstDepartmentId)
                 .HasConstraintName("FK_EmpJobDetail_FirstDepartment");
 
             builder.HasOne(d => d.FirstSection)
-                .WithMany(p => p.EmpJobDetail)
-                .HasForeignKey(d => d.FirstSection)
+                .WithMany(p => p.FirstEmpJobDetail)
+                .HasForeignKey(d => d.FirstSectionId)
                 .HasConstraintName("FK_EmpJobDetail_FirstSection");
 
             builder.HasOne(d => d.FirstDesignation)
-                .WithMany(p => p.EmpJobDetail)
+                .WithMany(p => p.FirstEmpJobDetail)
                 .HasForeignKey(d => d.FirstDesignationId)
                 .HasConstraintName("FK_EmpJobDetail_FirstDesignation");
         }

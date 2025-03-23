@@ -40,32 +40,32 @@ namespace Hms.Persistence.Configurations.EmployeeInfos
             builder.HasOne(d => d.Country)
                 .WithMany(p => p.EmpPersonalInfo)
                 .HasForeignKey(d => d.NationalityId)
-                .HasConstraintName("FK_EmpPersonalInfo_EmpBasicInfo");
+                .HasConstraintName("FK_EmpPersonalInfo_Country");
 
-            builder.HasOne(d => d.EmpBasicInfo)
+            builder.HasOne(d => d.Relation)
                 .WithMany(p => p.EmpPersonalInfo)
-                .HasForeignKey(d => d.EmpId)
-                .HasConstraintName("FK_EmpPersonalInfo_EmpBasicInfo");
+                .HasForeignKey(d => d.GurdianRelationId)
+                .HasConstraintName("FK_EmpPersonalInfo_Relation");
 
-            builder.HasOne(d => d.EmpBasicInfo)
+            builder.HasOne(d => d.Religion)
                 .WithMany(p => p.EmpPersonalInfo)
-                .HasForeignKey(d => d.EmpId)
-                .HasConstraintName("FK_EmpPersonalInfo_EmpBasicInfo");
+                .HasForeignKey(d => d.ReligionId)
+                .HasConstraintName("FK_EmpPersonalInfo_Religion");
 
-            builder.HasOne(d => d.EmpBasicInfo)
+            builder.HasOne(d => d.HairColor)
                 .WithMany(p => p.EmpPersonalInfo)
-                .HasForeignKey(d => d.EmpId)
-                .HasConstraintName("FK_EmpPersonalInfo_EmpBasicInfo");
+                .HasForeignKey(d => d.HairColorId)
+                .HasConstraintName("FK_EmpPersonalInfo_HairColor");
 
-            builder.HasOne(d => d.EmpBasicInfo)
+            builder.HasOne(d => d.EyesColor)
                 .WithMany(p => p.EmpPersonalInfo)
-                .HasForeignKey(d => d.EmpId)
-                .HasConstraintName("FK_EmpPersonalInfo_EmpBasicInfo");
+                .HasForeignKey(d => d.EyesColorId)
+                .HasConstraintName("FK_EmpPersonalInfo_EyesColor");
 
-            builder.HasOne(d => d.EmpBasicInfo)
+            builder.HasOne(d => d.HealthIssueStatus)
                 .WithMany(p => p.EmpPersonalInfo)
-                .HasForeignKey(d => d.EmpId)
-                .HasConstraintName("FK_EmpPersonalInfo_EmpBasicInfo");
+                .HasForeignKey(d => d.HealthIssueStatusId)
+                .HasConstraintName("FK_EmpPersonalInfo_HealthIssueStatus");
         }
     }
 }

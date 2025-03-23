@@ -1,4 +1,6 @@
 ﻿using Hms.Domain.Common;
+using Hms.Domain.GuestInfos;
+using Hms.Domain.UserManage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +16,6 @@ namespace Hms.Domain.BasicSetup
         public string? Description { get; set; }
         public int? Position { get; set; }
         public bool Status { get; set; }
+        public virtual ICollection<AspNetUsers>? AspNetUsers { get; set; }
     }
 }

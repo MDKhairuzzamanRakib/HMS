@@ -19,6 +19,5 @@ namespace Hms.Domain.BasicSetup
         public bool Status { get; set; }
 
         public virtual ICollection<RoomInfo>? RoomInfo { get; set; }
-        public virtual ICollection<RoomPricing>? RoomPricing { get; set; }
     }
 }

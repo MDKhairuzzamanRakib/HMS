@@ -28,12 +28,12 @@ namespace Hms.Persistence.Configurations.BookingInfos
                 .HasConstraintName("FK_BookingInfo_RoomPricing");
 
             builder.HasOne(d => d.ReferedBy)
-                .WithMany(p => p.BookingInfo)
+                .WithMany(p => p.BookingInfoReferBy)
                 .HasForeignKey(d => d.ReferedById)
                 .HasConstraintName("FK_BookingInfo_ReferedBy");
 
             builder.HasOne(d => d.DiscountBy)
-                .WithMany(p => p.BookingInfo)
+                .WithMany(p => p.BookingInfoDiscountBy)
                 .HasForeignKey(d => d.DiscountById)
                 .HasConstraintName("FK_BookingInfo_DiscountBy");
         }

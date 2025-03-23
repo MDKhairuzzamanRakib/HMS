@@ -27,12 +27,14 @@ namespace Hms.Domain.UserManage
         public DateTimeOffset? LockoutEnd { get; set; }
         public bool LockoutEnabled { get; set; } = true;
         public int AccessFailedCount { get; set; } = 0;
-        public int? UserType { get; set; }
+        public int? UserTypeId { get; set; }
         public bool Status { get; set; }
         public bool? CanEditProfile { get; set; }
 
         public virtual ICollection<EmpBasicInfo>? EmpBasicInfo { get; set; }
         public virtual ICollection<GuestInfo>? GuestInfo { get; set; }
+        public virtual UserType? UserType { get; set; }
+        public virtual ICollection<AspNetUserRoles>? AspNetUserRoles { get; set; }
     }
 }
 

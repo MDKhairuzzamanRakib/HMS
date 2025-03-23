@@ -24,6 +24,7 @@ namespace Hms.Domain.OrganogramSetup
         public bool Status { get; set; }
 
         public virtual ICollection<EmpJobDetail>? EmpJobDetail { get; set; }
+        public virtual ICollection<EmpJobDetail>? FirstEmpJobDetail { get; set; }
         public virtual HotelInfo? HotelInfos { get; set; }
         public virtual ICollection<Section>? Section { get; set; }
         public virtual ICollection<Designation>? Designation { get; set; }

@@ -23,7 +23,7 @@ namespace Hms.Domain.RoomInfos
         public bool Status { get; set; }
 
         public virtual RoomInfo? RoomInfo { get; set; }
-        public virtual RoomType? RoomType { get; set; }
+        public virtual RateType? RateType { get; set; }
         public virtual ICollection<BookingInfo>? BookingInfo { get; set; }
     }
 }

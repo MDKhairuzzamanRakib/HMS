@@ -36,6 +36,7 @@ namespace Hms.Domain.EmployeeInfos
         public virtual ICollection<EmpJobDetail>? EmpJobDetail { get; set; }
         public virtual ICollection<EmpPersonalInfo>? EmpPersonalInfo { get; set; }
         public virtual ICollection<PaymentStatus>? PaymentStatus { get; set; }
-        public virtual ICollection<BookingInfo>? BookingInfo { get; set; }
+        public virtual ICollection<BookingInfo>? BookingInfoReferBy { get; set; }
+        public virtual ICollection<BookingInfo>? BookingInfoDiscountBy { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Hms.Domain.Common;
+using Hms.Domain.RoomInfos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,7 @@ namespace Hms.Domain.BasicSetup
         public string? Description { get; set; }
         public int? Position { get; set; }
         public bool Status { get; set; }
+
+        public virtual ICollection<RoomPricing>? RoomPricing { get; set; }
     }
 }
