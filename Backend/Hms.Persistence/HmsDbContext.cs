@@ -33,8 +33,14 @@ namespace Hms.Persistence
         {
 
         }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.ConfigureWarnings(warnings =>
+                warnings.Ignore(Microsoft.EntityFrameworkCore.Diagnostics.RelationalEventId.PendingModelChangesWarning));
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             #region BasicSetup
             modelBuilder.ApplyConfiguration(new BloodGroupConfiguration());
             modelBuilder.ApplyConfiguration(new CategoryTypeConfiguration());
@@ -92,9 +98,10 @@ namespace Hms.Persistence
 
             #region UserManage
             modelBuilder.ApplyConfiguration(new AspNetRolesConfiguration());
-            modelBuilder.ApplyConfiguration(new AspNetUserRolesConfiguration());
+            modelBuilder.ApplyConfiguration(new AspNetUsersConfiguration());
             modelBuilder.ApplyConfiguration(new AspNetUserRolesConfiguration());
             #endregion
+
 
             base.OnModelCreating(modelBuilder);
         }
@@ -163,4 +170,5 @@ namespace Hms.Persistence
         #endregion
 
     }
+
 }

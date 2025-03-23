@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hms.Persistence.Migrations
 {
     [DbContext(typeof(HmsDbContext))]
-    [Migration("20250323065755_ScriptA")]
+    [Migration("20250323074358_ScriptA")]
     partial class ScriptA
     {
         /// <inheritdoc />
@@ -1791,6 +1791,23 @@ namespace Hms.Persistence.Migrations
                         .HasName("PK_AspNetRoles");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "b9dfc798-d2cf-4010-9f8b-2068a91bdfaf",
+                            Name = "Guest"
+                        },
+                        new
+                        {
+                            Id = "8692fe73-efe2-4fd2-94be-4545f88be14d",
+                            Name = "User"
+                        },
+                        new
+                        {
+                            Id = "a7a25bd6-da61-43c8-93db-ba4d08642ad9",
+                            Name = "Admin"
+                        });
                 });
 
             modelBuilder.Entity("Hms.Domain.UserManage.AspNetUserRoles", b =>
@@ -1807,6 +1824,23 @@ namespace Hms.Persistence.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "0ad790b9-331b-47a0-b707-8bbb6e2ef1dd",
+                            RoleId = "b9dfc798-d2cf-4010-9f8b-2068a91bdfaf"
+                        },
+                        new
+                        {
+                            UserId = "15b95c84-5f38-4318-a5c1-114e4d459980",
+                            RoleId = "8692fe73-efe2-4fd2-94be-4545f88be14d"
+                        },
+                        new
+                        {
+                            UserId = "1f2f4587-b2f3-4421-984d-0a576465c1c7",
+                            RoleId = "a7a25bd6-da61-43c8-93db-ba4d08642ad9"
+                        });
                 });
 
             modelBuilder.Entity("Hms.Domain.UserManage.AspNetUsers", b =>
@@ -1877,11 +1911,71 @@ namespace Hms.Persistence.Migrations
                     b.Property<int?>("UserTypeId")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK_AspNetUsers");
 
                     b.HasIndex("UserTypeId");
 
                     b.ToTable("AspNetUsers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "0ad790b9-331b-47a0-b707-8bbb6e2ef1dd",
+                            AccessFailedCount = 0,
+                            DateCreated = new DateTime(2025, 3, 23, 13, 43, 57, 176, DateTimeKind.Local).AddTicks(1911),
+                            Email = "guest@localhost.com",
+                            EmailConfirmed = true,
+                            FirstName = "System",
+                            LastModifiedDate = new DateTime(2025, 3, 23, 13, 43, 57, 177, DateTimeKind.Local).AddTicks(7923),
+                            LastName = "Guest",
+                            LockoutEnabled = true,
+                            NormalizedEmail = "GUEST@LOCALHOST.COM",
+                            NormalizedUserName = "GUEST",
+                            PasswordHash = "AQAAAAIAAYagAAAAELxWeCMkad5JLRmzr7+KWIVsMY3EPhTOn48A3qpHGYBv3HJFtMgfUQREsUgXA7cnOQ==",
+                            PhoneNumberConfirmed = false,
+                            Status = false,
+                            TwoFactorEnabled = false,
+                            UserName = "guest"
+                        },
+                        new
+                        {
+                            Id = "15b95c84-5f38-4318-a5c1-114e4d459980",
+                            AccessFailedCount = 0,
+                            DateCreated = new DateTime(2025, 3, 23, 13, 43, 57, 287, DateTimeKind.Local).AddTicks(1666),
+                            Email = "user@localhost.com",
+                            EmailConfirmed = true,
+                            FirstName = "System",
+                            LastModifiedDate = new DateTime(2025, 3, 23, 13, 43, 57, 287, DateTimeKind.Local).AddTicks(1678),
+                            LastName = "User",
+                            LockoutEnabled = true,
+                            NormalizedEmail = "USER@LOCALHOST.COM",
+                            NormalizedUserName = "USER",
+                            PasswordHash = "AQAAAAIAAYagAAAAENItJAqC2OLQLmzyZGYPUXcdirmHwZe6CcA7ldcf937y5fVCwsdBn++9kP42Tfe1sw==",
+                            PhoneNumberConfirmed = false,
+                            Status = false,
+                            TwoFactorEnabled = false,
+                            UserName = "user"
+                        },
+                        new
+                        {
+                            Id = "1f2f4587-b2f3-4421-984d-0a576465c1c7",
+                            AccessFailedCount = 0,
+                            DateCreated = new DateTime(2025, 3, 23, 13, 43, 57, 389, DateTimeKind.Local).AddTicks(7561),
+                            Email = "admin@localhost.com",
+                            EmailConfirmed = true,
+                            FirstName = "System",
+                            LastModifiedDate = new DateTime(2025, 3, 23, 13, 43, 57, 389, DateTimeKind.Local).AddTicks(7572),
+                            LastName = "Admin",
+                            LockoutEnabled = true,
+                            NormalizedEmail = "ADMIN@LOCALHOST.COM",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAIAAYagAAAAELfvB02jJLzcxCGbl/HoySDP26SB5BN0Bs0gxfhKhE3QqeO6irfgSR46DJbdKekArg==",
+                            PhoneNumberConfirmed = false,
+                            Status = false,
+                            TwoFactorEnabled = false,
+                            UserName = "admin"
+                        });
                 });
 
             modelBuilder.Entity("Hms.Domain.BasicSetup.City", b =>
@@ -2343,7 +2437,8 @@ namespace Hms.Persistence.Migrations
                 {
                     b.HasOne("Hms.Domain.BasicSetup.UserType", "UserType")
                         .WithMany("AspNetUsers")
-                        .HasForeignKey("UserTypeId");
+                        .HasForeignKey("UserTypeId")
+                        .HasConstraintName("FK_AspNetUsers_UserType");
 
                     b.Navigation("UserType");
                 });

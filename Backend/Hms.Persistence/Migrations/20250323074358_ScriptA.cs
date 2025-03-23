@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace Hms.Persistence.Migrations
 {
     /// <inheritdoc />
@@ -403,7 +405,7 @@ namespace Hms.Persistence.Migrations
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetUsers_UserType_UserTypeId",
+                        name: "FK_AspNetUsers_UserType",
                         column: x => x.UserTypeId,
                         principalTable: "UserType",
                         principalColumn: "Id");
@@ -1132,6 +1134,36 @@ namespace Hms.Persistence.Migrations
                         column: x => x.PaymentTypeId,
                         principalTable: "PaymentType",
                         principalColumn: "Id");
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { "8692fe73-efe2-4fd2-94be-4545f88be14d", "User" },
+                    { "a7a25bd6-da61-43c8-93db-ba4d08642ad9", "Admin" },
+                    { "b9dfc798-d2cf-4010-9f8b-2068a91bdfaf", "Guest" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "CanEditProfile", "CreatedBy", "DateCreated", "Email", "EmailConfirmed", "FirstName", "LastModifiedBy", "LastModifiedDate", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Status", "TwoFactorEnabled", "UserName", "UserTypeId" },
+                values: new object[,]
+                {
+                    { "0ad790b9-331b-47a0-b707-8bbb6e2ef1dd", 0, null, null, new DateTime(2025, 3, 23, 13, 43, 57, 176, DateTimeKind.Local).AddTicks(1911), "guest@localhost.com", true, "System", null, new DateTime(2025, 3, 23, 13, 43, 57, 177, DateTimeKind.Local).AddTicks(7923), "Guest", true, null, "GUEST@LOCALHOST.COM", "GUEST", "AQAAAAIAAYagAAAAELxWeCMkad5JLRmzr7+KWIVsMY3EPhTOn48A3qpHGYBv3HJFtMgfUQREsUgXA7cnOQ==", null, false, false, false, "guest", null },
+                    { "15b95c84-5f38-4318-a5c1-114e4d459980", 0, null, null, new DateTime(2025, 3, 23, 13, 43, 57, 287, DateTimeKind.Local).AddTicks(1666), "user@localhost.com", true, "System", null, new DateTime(2025, 3, 23, 13, 43, 57, 287, DateTimeKind.Local).AddTicks(1678), "User", true, null, "USER@LOCALHOST.COM", "USER", "AQAAAAIAAYagAAAAENItJAqC2OLQLmzyZGYPUXcdirmHwZe6CcA7ldcf937y5fVCwsdBn++9kP42Tfe1sw==", null, false, false, false, "user", null },
+                    { "1f2f4587-b2f3-4421-984d-0a576465c1c7", 0, null, null, new DateTime(2025, 3, 23, 13, 43, 57, 389, DateTimeKind.Local).AddTicks(7561), "admin@localhost.com", true, "System", null, new DateTime(2025, 3, 23, 13, 43, 57, 389, DateTimeKind.Local).AddTicks(7572), "Admin", true, null, "ADMIN@LOCALHOST.COM", "ADMIN", "AQAAAAIAAYagAAAAELfvB02jJLzcxCGbl/HoySDP26SB5BN0Bs0gxfhKhE3QqeO6irfgSR46DJbdKekArg==", null, false, false, false, "admin", null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[,]
+                {
+                    { "b9dfc798-d2cf-4010-9f8b-2068a91bdfaf", "0ad790b9-331b-47a0-b707-8bbb6e2ef1dd" },
+                    { "8692fe73-efe2-4fd2-94be-4545f88be14d", "15b95c84-5f38-4318-a5c1-114e4d459980" },
+                    { "a7a25bd6-da61-43c8-93db-ba4d08642ad9", "1f2f4587-b2f3-4421-984d-0a576465c1c7" }
                 });
 
             migrationBuilder.CreateIndex(
