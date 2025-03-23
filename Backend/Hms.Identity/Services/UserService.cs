@@ -1,6 +1,5 @@
 ﻿using Hms.Application.Contracts.Identity;
 using Hms.Application.DTOs.Common;
-using Hms.Application.DTOs.User;
 using Hms.Application.Models.Identity;
 using Hms.Application.Models;
 using Hms.Application.Responses;
@@ -9,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Hms.Application.DTOs.UserManage.User;
 
 namespace Hms.Identity.Services
 {

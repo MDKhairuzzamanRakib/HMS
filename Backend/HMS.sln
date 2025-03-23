@@ -21,6 +21,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hms.Persistence", "Hms.Persistence\Hms.Persistence.csproj", "{E07BADC6-3C1B-4E69-8295-A05C65C966A0}"
 	ProjectSection(ProjectDependencies) = postProject
 		{74608F6F-43E0-4537-B340-302A921ED502} = {74608F6F-43E0-4537-B340-302A921ED502}
+		{A3A07845-71C2-42EA-9869-881B7F69DE9B} = {A3A07845-71C2-42EA-9869-881B7F69DE9B}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hms.Application", "Hms.Application\Hms.Application.csproj", "{74608F6F-43E0-4537-B340-302A921ED502}"

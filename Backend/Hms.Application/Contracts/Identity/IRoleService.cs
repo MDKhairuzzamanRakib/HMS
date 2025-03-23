@@ -1,4 +1,4 @@
-﻿using Hms.Application.DTOs.AspNetRoles;
+﻿using Hms.Application.DTOs.UserManage.AspNetRoles;
 using Hms.Application.Responses;
 using Hms.Shared.Models;
 using System;
