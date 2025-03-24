@@ -11,7 +11,7 @@ namespace Hms.Domain.BasicSetup
     public class EyesColor : BaseDomainEntity
     {
         public int Id { get; set; }
-        public int Name { get; set; }
+        public string Name { get; set; }
         public string? Remark { get; set; }
         public int? Position { get; set; }
         public bool Status { get; set; }
