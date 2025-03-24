@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hms.Persistence.Migrations
 {
     [DbContext(typeof(HmsDbContext))]
-    [Migration("20250323074358_ScriptA")]
+    [Migration("20250324072200_ScriptA")]
     partial class ScriptA
     {
         /// <inheritdoc />
@@ -45,8 +45,9 @@ namespace Hms.Persistence.Migrations
                     b.Property<DateTime?>("LastModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Name")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("Position")
                         .HasColumnType("int");
@@ -83,8 +84,9 @@ namespace Hms.Persistence.Migrations
                     b.Property<DateTime?>("LastModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Name")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("Position")
                         .HasColumnType("int");
@@ -124,8 +126,9 @@ namespace Hms.Persistence.Migrations
                     b.Property<DateTime?>("LastModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Name")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("Position")
                         .HasColumnType("int");
@@ -164,8 +167,9 @@ namespace Hms.Persistence.Migrations
                     b.Property<DateTime?>("LastModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Name")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("Position")
                         .HasColumnType("int");
@@ -240,8 +244,9 @@ namespace Hms.Persistence.Migrations
                     b.Property<DateTime?>("LastModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Name")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("Position")
                         .HasColumnType("int");
@@ -278,8 +283,9 @@ namespace Hms.Persistence.Migrations
                     b.Property<DateTime?>("LastModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Name")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("Position")
                         .HasColumnType("int");
@@ -316,8 +322,9 @@ namespace Hms.Persistence.Migrations
                     b.Property<DateTime?>("LastModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Name")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("Position")
                         .HasColumnType("int");
@@ -354,8 +361,9 @@ namespace Hms.Persistence.Migrations
                     b.Property<DateTime?>("LastModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Name")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("Position")
                         .HasColumnType("int");
@@ -392,8 +400,9 @@ namespace Hms.Persistence.Migrations
                     b.Property<DateTime?>("LastModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Name")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("Position")
                         .HasColumnType("int");
@@ -506,8 +515,9 @@ namespace Hms.Persistence.Migrations
                     b.Property<DateTime?>("LastModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Name")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("Position")
                         .HasColumnType("int");
@@ -544,8 +554,9 @@ namespace Hms.Persistence.Migrations
                     b.Property<DateTime?>("LastModifiedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Name")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("Position")
                         .HasColumnType("int");
@@ -1923,16 +1934,16 @@ namespace Hms.Persistence.Migrations
                         {
                             Id = "0ad790b9-331b-47a0-b707-8bbb6e2ef1dd",
                             AccessFailedCount = 0,
-                            DateCreated = new DateTime(2025, 3, 23, 13, 43, 57, 176, DateTimeKind.Local).AddTicks(1911),
+                            DateCreated = new DateTime(2025, 3, 24, 13, 21, 56, 834, DateTimeKind.Local).AddTicks(5094),
                             Email = "guest@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "System",
-                            LastModifiedDate = new DateTime(2025, 3, 23, 13, 43, 57, 177, DateTimeKind.Local).AddTicks(7923),
+                            LastModifiedDate = new DateTime(2025, 3, 24, 13, 21, 56, 836, DateTimeKind.Local).AddTicks(4120),
                             LastName = "Guest",
                             LockoutEnabled = true,
                             NormalizedEmail = "GUEST@LOCALHOST.COM",
                             NormalizedUserName = "GUEST",
-                            PasswordHash = "AQAAAAIAAYagAAAAELxWeCMkad5JLRmzr7+KWIVsMY3EPhTOn48A3qpHGYBv3HJFtMgfUQREsUgXA7cnOQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEA3E5q+nL1yF3y2iPSDF5eGzTXVRVb6P0QmFYSo7Pa05/LDKKeiTK8r2ntQ44z8rHA==",
                             PhoneNumberConfirmed = false,
                             Status = false,
                             TwoFactorEnabled = false,
@@ -1942,16 +1953,16 @@ namespace Hms.Persistence.Migrations
                         {
                             Id = "15b95c84-5f38-4318-a5c1-114e4d459980",
                             AccessFailedCount = 0,
-                            DateCreated = new DateTime(2025, 3, 23, 13, 43, 57, 287, DateTimeKind.Local).AddTicks(1666),
+                            DateCreated = new DateTime(2025, 3, 24, 13, 21, 57, 29, DateTimeKind.Local).AddTicks(9216),
                             Email = "user@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "System",
-                            LastModifiedDate = new DateTime(2025, 3, 23, 13, 43, 57, 287, DateTimeKind.Local).AddTicks(1678),
+                            LastModifiedDate = new DateTime(2025, 3, 24, 13, 21, 57, 29, DateTimeKind.Local).AddTicks(9240),
                             LastName = "User",
                             LockoutEnabled = true,
                             NormalizedEmail = "USER@LOCALHOST.COM",
                             NormalizedUserName = "USER",
-                            PasswordHash = "AQAAAAIAAYagAAAAENItJAqC2OLQLmzyZGYPUXcdirmHwZe6CcA7ldcf937y5fVCwsdBn++9kP42Tfe1sw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJAyQiZcc0y8lK3MM9cMmYhjYvb7Yll+m1StLfz0zhxKn6WAUPQgJhX4EfGTrvFNqg==",
                             PhoneNumberConfirmed = false,
                             Status = false,
                             TwoFactorEnabled = false,
@@ -1961,16 +1972,16 @@ namespace Hms.Persistence.Migrations
                         {
                             Id = "1f2f4587-b2f3-4421-984d-0a576465c1c7",
                             AccessFailedCount = 0,
-                            DateCreated = new DateTime(2025, 3, 23, 13, 43, 57, 389, DateTimeKind.Local).AddTicks(7561),
+                            DateCreated = new DateTime(2025, 3, 24, 13, 21, 57, 148, DateTimeKind.Local).AddTicks(4651),
                             Email = "admin@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "System",
-                            LastModifiedDate = new DateTime(2025, 3, 23, 13, 43, 57, 389, DateTimeKind.Local).AddTicks(7572),
+                            LastModifiedDate = new DateTime(2025, 3, 24, 13, 21, 57, 148, DateTimeKind.Local).AddTicks(4666),
                             LastName = "Admin",
                             LockoutEnabled = true,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAELfvB02jJLzcxCGbl/HoySDP26SB5BN0Bs0gxfhKhE3QqeO6irfgSR46DJbdKekArg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDo9x3wNXpfPbKbAiu2kTskP5RXqPooPjueMC8O0tWYmX6cC5HEOOC4LOUzNBI8Nqw==",
                             PhoneNumberConfirmed = false,
                             Status = false,
                             TwoFactorEnabled = false,
