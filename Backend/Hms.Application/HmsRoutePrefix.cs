@@ -12,7 +12,8 @@ namespace Hms.Application
         private const string HMSRoutePrefixBase = ApiRoutePrefix.RoutePrefixBase + "hms/";
 
         #region BasicSetup
-        public const string BloodGroup = HMSRoutePrefixBase + "blood-group";
+        public const string BloodGroup = HMSRoutePrefixBase + "bloodGroup";
+        public const string CategoryType = HMSRoutePrefixBase + "categoryType";
 
         #endregion
     }
