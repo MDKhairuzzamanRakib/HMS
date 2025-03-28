@@ -7,7 +7,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Folder Include="DTOs\BasicSetup\" />
+		<Folder Include="DTOs\BasicSetup\CategoryType\" />
 		<Folder Include="DTOs\BookingInfos\" />
 		<Folder Include="DTOs\EmployeeInfos\" />
 		<Folder Include="DTOs\GuestInfos\" />
@@ -21,7 +21,6 @@
 		<Folder Include="Features\Common\Requests\Commands\" />
 		<Folder Include="Features\Common\Requests\Queries\" />
 		<Folder Include="Features\UserManage\" />
-		<Folder Include="Features\BasicSetup\" />
 		<Folder Include="Features\BookingInfos\" />
 		<Folder Include="Features\EmployeeInfos\" />
 		<Folder Include="Features\GuestInfos\" />

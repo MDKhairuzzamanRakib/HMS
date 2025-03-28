@@ -10,5 +10,11 @@ namespace Hms.Application
     public static class HmsRoutePrefix
     {
         private const string HMSRoutePrefixBase = ApiRoutePrefix.RoutePrefixBase + "hms/";
+
+        #region BasicSetup
+        public const string BloodGroup = HMSRoutePrefixBase + "bloodGroup";
+        public const string CategoryType = HMSRoutePrefixBase + "categoryType";
+
+        #endregion
     }
 }

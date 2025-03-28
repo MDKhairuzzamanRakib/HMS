@@ -31,7 +31,7 @@ namespace Hms.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Remark = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Position = table.Column<int>(type: "int", nullable: true),
                     Status = table.Column<bool>(type: "bit", nullable: false),
@@ -51,7 +51,7 @@ namespace Hms.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Remark = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Position = table.Column<int>(type: "int", nullable: true),
                     Status = table.Column<bool>(type: "bit", nullable: false),
@@ -71,7 +71,7 @@ namespace Hms.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Remark = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Position = table.Column<int>(type: "int", nullable: true),
                     Status = table.Column<bool>(type: "bit", nullable: false),
@@ -132,7 +132,7 @@ namespace Hms.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Remark = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Position = table.Column<int>(type: "int", nullable: true),
                     Status = table.Column<bool>(type: "bit", nullable: false),
@@ -152,7 +152,7 @@ namespace Hms.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Remark = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Position = table.Column<int>(type: "int", nullable: true),
                     Status = table.Column<bool>(type: "bit", nullable: false),
@@ -172,7 +172,7 @@ namespace Hms.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Remark = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Position = table.Column<int>(type: "int", nullable: true),
                     Status = table.Column<bool>(type: "bit", nullable: false),
@@ -192,7 +192,7 @@ namespace Hms.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Remark = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Position = table.Column<int>(type: "int", nullable: true),
                     Status = table.Column<bool>(type: "bit", nullable: false),
@@ -212,7 +212,7 @@ namespace Hms.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Remark = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Position = table.Column<int>(type: "int", nullable: true),
                     Status = table.Column<bool>(type: "bit", nullable: false),
@@ -272,7 +272,7 @@ namespace Hms.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Remark = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Position = table.Column<int>(type: "int", nullable: true),
                     Status = table.Column<bool>(type: "bit", nullable: false),
@@ -292,7 +292,7 @@ namespace Hms.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Remark = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Position = table.Column<int>(type: "int", nullable: true),
                     Status = table.Column<bool>(type: "bit", nullable: false),
@@ -354,7 +354,7 @@ namespace Hms.Persistence.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<int>(type: "int", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CountryId = table.Column<int>(type: "int", nullable: true),
                     Remark = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Position = table.Column<int>(type: "int", nullable: true),
@@ -1151,9 +1151,9 @@ namespace Hms.Persistence.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "CanEditProfile", "CreatedBy", "DateCreated", "Email", "EmailConfirmed", "FirstName", "LastModifiedBy", "LastModifiedDate", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Status", "TwoFactorEnabled", "UserName", "UserTypeId" },
                 values: new object[,]
                 {
-                    { "0ad790b9-331b-47a0-b707-8bbb6e2ef1dd", 0, null, null, new DateTime(2025, 3, 23, 13, 43, 57, 176, DateTimeKind.Local).AddTicks(1911), "guest@localhost.com", true, "System", null, new DateTime(2025, 3, 23, 13, 43, 57, 177, DateTimeKind.Local).AddTicks(7923), "Guest", true, null, "GUEST@LOCALHOST.COM", "GUEST", "AQAAAAIAAYagAAAAELxWeCMkad5JLRmzr7+KWIVsMY3EPhTOn48A3qpHGYBv3HJFtMgfUQREsUgXA7cnOQ==", null, false, false, false, "guest", null },
-                    { "15b95c84-5f38-4318-a5c1-114e4d459980", 0, null, null, new DateTime(2025, 3, 23, 13, 43, 57, 287, DateTimeKind.Local).AddTicks(1666), "user@localhost.com", true, "System", null, new DateTime(2025, 3, 23, 13, 43, 57, 287, DateTimeKind.Local).AddTicks(1678), "User", true, null, "USER@LOCALHOST.COM", "USER", "AQAAAAIAAYagAAAAENItJAqC2OLQLmzyZGYPUXcdirmHwZe6CcA7ldcf937y5fVCwsdBn++9kP42Tfe1sw==", null, false, false, false, "user", null },
-                    { "1f2f4587-b2f3-4421-984d-0a576465c1c7", 0, null, null, new DateTime(2025, 3, 23, 13, 43, 57, 389, DateTimeKind.Local).AddTicks(7561), "admin@localhost.com", true, "System", null, new DateTime(2025, 3, 23, 13, 43, 57, 389, DateTimeKind.Local).AddTicks(7572), "Admin", true, null, "ADMIN@LOCALHOST.COM", "ADMIN", "AQAAAAIAAYagAAAAELfvB02jJLzcxCGbl/HoySDP26SB5BN0Bs0gxfhKhE3QqeO6irfgSR46DJbdKekArg==", null, false, false, false, "admin", null }
+                    { "0ad790b9-331b-47a0-b707-8bbb6e2ef1dd", 0, null, null, new DateTime(2025, 3, 24, 13, 21, 56, 834, DateTimeKind.Local).AddTicks(5094), "guest@localhost.com", true, "System", null, new DateTime(2025, 3, 24, 13, 21, 56, 836, DateTimeKind.Local).AddTicks(4120), "Guest", true, null, "GUEST@LOCALHOST.COM", "GUEST", "AQAAAAIAAYagAAAAEA3E5q+nL1yF3y2iPSDF5eGzTXVRVb6P0QmFYSo7Pa05/LDKKeiTK8r2ntQ44z8rHA==", null, false, false, false, "guest", null },
+                    { "15b95c84-5f38-4318-a5c1-114e4d459980", 0, null, null, new DateTime(2025, 3, 24, 13, 21, 57, 29, DateTimeKind.Local).AddTicks(9216), "user@localhost.com", true, "System", null, new DateTime(2025, 3, 24, 13, 21, 57, 29, DateTimeKind.Local).AddTicks(9240), "User", true, null, "USER@LOCALHOST.COM", "USER", "AQAAAAIAAYagAAAAEJAyQiZcc0y8lK3MM9cMmYhjYvb7Yll+m1StLfz0zhxKn6WAUPQgJhX4EfGTrvFNqg==", null, false, false, false, "user", null },
+                    { "1f2f4587-b2f3-4421-984d-0a576465c1c7", 0, null, null, new DateTime(2025, 3, 24, 13, 21, 57, 148, DateTimeKind.Local).AddTicks(4651), "admin@localhost.com", true, "System", null, new DateTime(2025, 3, 24, 13, 21, 57, 148, DateTimeKind.Local).AddTicks(4666), "Admin", true, null, "ADMIN@LOCALHOST.COM", "ADMIN", "AQAAAAIAAYagAAAAEDo9x3wNXpfPbKbAiu2kTskP5RXqPooPjueMC8O0tWYmX6cC5HEOOC4LOUzNBI8Nqw==", null, false, false, false, "admin", null }
                 });
 
             migrationBuilder.InsertData(

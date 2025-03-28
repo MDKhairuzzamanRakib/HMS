@@ -26,4 +26,16 @@
 		<ProjectReference Include="..\Hms.Persistence\Hms.Persistence.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Controllers\BookingInfos\" />
+	  <Folder Include="Controllers\Common\" />
+	  <Folder Include="Controllers\EmployeeInfos\" />
+	  <Folder Include="Controllers\GuestInfos\" />
+	  <Folder Include="Controllers\HotelInfos\" />
+	  <Folder Include="Controllers\OrganogramSetup\" />
+	  <Folder Include="Controllers\PaymentInfos\" />
+	  <Folder Include="Controllers\RoomInfos\" />
+	  <Folder Include="Controllers\UserManage\" />
+	</ItemGroup>
+
 </Project>
