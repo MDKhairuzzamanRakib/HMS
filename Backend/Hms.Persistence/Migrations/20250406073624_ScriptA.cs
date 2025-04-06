@@ -14,15 +14,75 @@ namespace Hms.Persistence.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "AspNetRoleClaims",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RoleId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetRoleClaims", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NormalizedName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetRoles", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUserClaims",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ClaimType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ClaimValue = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserClaims", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUserLogins",
+                columns: table => new
+                {
+                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserLogins", x => new { x.LoginProvider, x.ProviderKey });
+                });
+
+            migrationBuilder.CreateTable(
+                name: "AspNetUserTokens",
+                columns: table => new
+                {
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Value = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AspNetUserTokens", x => new { x.UserId, x.LoginProvider, x.Name });
                 });
 
             migrationBuilder.CreateTable(
@@ -390,12 +450,18 @@ namespace Hms.Persistence.Migrations
                     PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
                     TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
                     PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
                     LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
                     AccessFailedCount = table.Column<int>(type: "int", nullable: false),
-                    UserTypeId = table.Column<int>(type: "int", nullable: true),
-                    Status = table.Column<bool>(type: "bit", nullable: false),
+                    RoleName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CanEditProfile = table.Column<bool>(type: "bit", nullable: true),
+                    UserTypeId = table.Column<int>(type: "int", nullable: true),
+                    Status = table.Column<bool>(type: "bit", nullable: true),
+                    IsActive = table.Column<bool>(type: "bit", nullable: true),
+                    InActiveBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    InActiveDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: true),
                     LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -1138,22 +1204,22 @@ namespace Hms.Persistence.Migrations
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
-                columns: new[] { "Id", "Name" },
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "8692fe73-efe2-4fd2-94be-4545f88be14d", "User" },
-                    { "a7a25bd6-da61-43c8-93db-ba4d08642ad9", "Admin" },
-                    { "b9dfc798-d2cf-4010-9f8b-2068a91bdfaf", "Guest" }
+                    { "8692fe73-efe2-4fd2-94be-4545f88be14d", "d95d2e30-a520-493c-b0e0-809936bbd537", "User", "USER" },
+                    { "a7a25bd6-da61-43c8-93db-ba4d08642ad9", null, "Admin", "ADMIN" },
+                    { "b9dfc798-d2cf-4010-9f8b-2068a91bdfaf", null, "Guest", null }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
-                columns: new[] { "Id", "AccessFailedCount", "CanEditProfile", "CreatedBy", "DateCreated", "Email", "EmailConfirmed", "FirstName", "LastModifiedBy", "LastModifiedDate", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "Status", "TwoFactorEnabled", "UserName", "UserTypeId" },
+                columns: new[] { "Id", "AccessFailedCount", "CanEditProfile", "ConcurrencyStamp", "CreatedBy", "DateCreated", "Email", "EmailConfirmed", "FirstName", "InActiveBy", "InActiveDate", "IsActive", "LastModifiedBy", "LastModifiedDate", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "RoleName", "SecurityStamp", "Status", "TwoFactorEnabled", "UserName", "UserTypeId" },
                 values: new object[,]
                 {
-                    { "0ad790b9-331b-47a0-b707-8bbb6e2ef1dd", 0, null, null, new DateTime(2025, 3, 24, 13, 21, 56, 834, DateTimeKind.Local).AddTicks(5094), "guest@localhost.com", true, "System", null, new DateTime(2025, 3, 24, 13, 21, 56, 836, DateTimeKind.Local).AddTicks(4120), "Guest", true, null, "GUEST@LOCALHOST.COM", "GUEST", "AQAAAAIAAYagAAAAEA3E5q+nL1yF3y2iPSDF5eGzTXVRVb6P0QmFYSo7Pa05/LDKKeiTK8r2ntQ44z8rHA==", null, false, false, false, "guest", null },
-                    { "15b95c84-5f38-4318-a5c1-114e4d459980", 0, null, null, new DateTime(2025, 3, 24, 13, 21, 57, 29, DateTimeKind.Local).AddTicks(9216), "user@localhost.com", true, "System", null, new DateTime(2025, 3, 24, 13, 21, 57, 29, DateTimeKind.Local).AddTicks(9240), "User", true, null, "USER@LOCALHOST.COM", "USER", "AQAAAAIAAYagAAAAEJAyQiZcc0y8lK3MM9cMmYhjYvb7Yll+m1StLfz0zhxKn6WAUPQgJhX4EfGTrvFNqg==", null, false, false, false, "user", null },
-                    { "1f2f4587-b2f3-4421-984d-0a576465c1c7", 0, null, null, new DateTime(2025, 3, 24, 13, 21, 57, 148, DateTimeKind.Local).AddTicks(4651), "admin@localhost.com", true, "System", null, new DateTime(2025, 3, 24, 13, 21, 57, 148, DateTimeKind.Local).AddTicks(4666), "Admin", true, null, "ADMIN@LOCALHOST.COM", "ADMIN", "AQAAAAIAAYagAAAAEDo9x3wNXpfPbKbAiu2kTskP5RXqPooPjueMC8O0tWYmX6cC5HEOOC4LOUzNBI8Nqw==", null, false, false, false, "admin", null }
+                    { "0ad790b9-331b-47a0-b707-8bbb6e2ef1dd", 0, null, null, null, new DateTime(2025, 4, 6, 13, 36, 22, 817, DateTimeKind.Local).AddTicks(8856), "guest@localhost.com", true, "System", null, null, null, null, new DateTime(2025, 4, 6, 13, 36, 22, 819, DateTimeKind.Local).AddTicks(4201), "Guest", true, null, "GUEST@LOCALHOST.COM", "GUEST", "AQAAAAIAAYagAAAAEDxZN297dQH7tM12z/7ivXLAqGtV/emcOyqCTHf9xExVuDLxje5ZDdOisbmfaaCZVQ==", null, false, null, null, null, false, "guest", null },
+                    { "15b95c84-5f38-4318-a5c1-114e4d459980", 0, null, null, null, new DateTime(2025, 4, 6, 13, 36, 22, 927, DateTimeKind.Local).AddTicks(7876), "user@localhost.com", true, "System", null, null, null, null, new DateTime(2025, 4, 6, 13, 36, 22, 927, DateTimeKind.Local).AddTicks(7921), "User", true, null, "USER@LOCALHOST.COM", "USER", "AQAAAAIAAYagAAAAEBdzd+ePhyljLJaWuJo3xhNEDTBtzijy9JD+qybzirAAmLLmuNH1t5Zr5FvjP5Ocsw==", null, false, null, null, null, false, "user", null },
+                    { "1f2f4587-b2f3-4421-984d-0a576465c1c7", 0, null, null, null, new DateTime(2025, 4, 6, 13, 36, 23, 53, DateTimeKind.Local).AddTicks(374), "admin@localhost.com", true, "System", null, null, null, null, new DateTime(2025, 4, 6, 13, 36, 23, 53, DateTimeKind.Local).AddTicks(390), "Admin", true, null, "ADMIN@LOCALHOST.COM", "ADMIN", "AQAAAAIAAYagAAAAENBTWRa3DOm/RgpF1ToIIrXBbCsCg/KsqL1oW0d9HlXza/2jm35Ja9UE9cYR5NFmsw==", null, false, null, null, null, false, "admin", null }
                 });
 
             migrationBuilder.InsertData(
@@ -1451,7 +1517,19 @@ namespace Hms.Persistence.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "AspNetRoleClaims");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUserClaims");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUserLogins");
+
+            migrationBuilder.DropTable(
                 name: "AspNetUserRoles");
+
+            migrationBuilder.DropTable(
+                name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
                 name: "EmpJobDetail");

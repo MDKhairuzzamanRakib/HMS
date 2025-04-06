@@ -100,6 +100,10 @@ namespace Hms.Persistence
             modelBuilder.ApplyConfiguration(new AspNetRolesConfiguration());
             modelBuilder.ApplyConfiguration(new AspNetUsersConfiguration());
             modelBuilder.ApplyConfiguration(new AspNetUserRolesConfiguration());
+            modelBuilder.ApplyConfiguration(new AspNetRoleClaimsConfiguration());
+            modelBuilder.ApplyConfiguration(new AspNetUserClaimsConfiguration());
+            modelBuilder.ApplyConfiguration(new AspNetUserLoginsConfiguration());
+            modelBuilder.ApplyConfiguration(new AspNetUserTokensConfiguration());
             #endregion
 
 
@@ -167,6 +171,10 @@ namespace Hms.Persistence
         public virtual DbSet<AspNetRoles> AspNetRoles { get; set; } = null!;
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; } = null!;
         public virtual DbSet<AspNetUserRoles> AspNetUserRoles { get; set; } = null!;
+        public virtual DbSet<AspNetRoleClaims> AspNetRoleClaims { get; set; } = null!;
+        public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; } = null!;
+        public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; } = null!;
+        public virtual DbSet<AspNetUserTokens> AspNetUserTokens { get; set; } = null!;
         #endregion
 
     }

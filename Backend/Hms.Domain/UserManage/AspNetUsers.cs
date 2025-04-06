@@ -24,12 +24,18 @@ namespace Hms.Domain.UserManage
         public bool PhoneNumberConfirmed { get; set; }
         public bool TwoFactorEnabled { get; set; }
         public string? PasswordHash { get; set; }
+        public string? SecurityStamp { get; set; }
+        public string? ConcurrencyStamp { get; set; }
         public DateTimeOffset? LockoutEnd { get; set; }
         public bool LockoutEnabled { get; set; } = true;
         public int AccessFailedCount { get; set; } = 0;
-        public int? UserTypeId { get; set; }
-        public bool Status { get; set; }
+        public string? RoleName { get; set; }
         public bool? CanEditProfile { get; set; }
+        public int? UserTypeId { get; set; }
+        public bool? Status { get; set; }
+        public bool? IsActive { get; set; }
+        public string? InActiveBy { get; set; }
+        public DateTime? InActiveDate { get; set; }
 
         public virtual ICollection<EmpBasicInfo>? EmpBasicInfo { get; set; }
         public virtual ICollection<GuestInfo>? GuestInfo { get; set; }
