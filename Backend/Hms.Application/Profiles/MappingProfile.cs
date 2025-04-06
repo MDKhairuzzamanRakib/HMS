@@ -13,11 +13,17 @@ namespace Hms.Application.Profiles
     {
         public MappingProfile()
         {
+            #region BasicSetup
             CreateMap<BloodGroup, CommonBasicSetupDto>().ReverseMap();
             CreateMap<BloodGroup, CommonBasicSetupDto>().ReverseMap();
 
             CreateMap<CategoryType, CommonBasicSetupDto>().ReverseMap();
             CreateMap<CategoryType, CommonBasicSetupDto>().ReverseMap();
+
+            CreateMap<Gender, CommonBasicSetupDto>().ReverseMap();
+            CreateMap<Gender, CommonBasicSetupDto>().ReverseMap();
+
+            #endregion
         }
     }
 }
