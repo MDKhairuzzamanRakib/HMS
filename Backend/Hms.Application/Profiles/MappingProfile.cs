@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Hms.Application.DTOs.BasicSetup.BloodGroup;
+using Hms.Application.DTOs.Common.CommonBasicSetupDto;
 using Hms.Domain.BasicSetup;
 using System;
 using System.Collections.Generic;
@@ -13,8 +13,11 @@ namespace Hms.Application.Profiles
     {
         public MappingProfile()
         {
-            CreateMap<BloodGroup, BloodGroupDto>().ReverseMap();
-            CreateMap<BloodGroup, CreateBloodGroupDto>().ReverseMap();
+            CreateMap<BloodGroup, CommonBasicSetupDto>().ReverseMap();
+            CreateMap<BloodGroup, CommonBasicSetupDto>().ReverseMap();
+
+            CreateMap<CategoryType, CommonBasicSetupDto>().ReverseMap();
+            CreateMap<CategoryType, CommonBasicSetupDto>().ReverseMap();
         }
     }
 }
