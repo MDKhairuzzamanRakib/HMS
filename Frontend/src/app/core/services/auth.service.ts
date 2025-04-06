@@ -60,4 +60,6 @@ export class AuthService {
     }
     return this.http.post<any>(`${environment.securityUrl}/Account/verifyToken`,payload)
   }
+
+  
 }
