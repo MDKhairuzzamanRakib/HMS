@@ -28,11 +28,14 @@ namespace Hms.Persistence.Configurations.UserManage
                 {
                     Id = "8692fe73-efe2-4fd2-94be-4545f88be14d",
                     Name = "User",
+                    NormalizedName = "USER",
+                    ConcurrencyStamp = "d95d2e30-a520-493c-b0e0-809936bbd537"
                 },
                 new AspNetRoles
                 {
                     Id = "a7a25bd6-da61-43c8-93db-ba4d08642ad9",
                     Name = "Admin",
+                    NormalizedName = "ADMIN"
                 }
             );
         }

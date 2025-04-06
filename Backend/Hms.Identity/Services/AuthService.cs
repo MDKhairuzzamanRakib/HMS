@@ -82,7 +82,6 @@ namespace Hms.Identity.Services
                 Email = user.Email,
                 Username = user.UserName,
                 Role = roleName,
-                EmpId = user.EmpId
             };
 
             return response;
@@ -99,7 +98,6 @@ namespace Hms.Identity.Services
                 LastName = request.LastName,
                 UserName = request.UserName,
                 PhoneNumber = request.PhoneNumber,
-                EmpId = request.EmpId,
                 IsActive = request.IsActive,
                 EmailConfirmed = true,
                 CanEditProfile = false
@@ -136,6 +134,7 @@ namespace Hms.Identity.Services
                 if (result.Succeeded)
                 {
                     await _userManager.AddToRoleAsync(user, "User");
+                    response.StringId = user.Id;
                     response.Success = true;
                     response.Message = $"Register Successfull, UserName : '{request.UserName}'.";
                 }
@@ -168,7 +167,7 @@ namespace Hms.Identity.Services
             {
                 new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(JwtRegisteredClaimNames.Email, user.Email),
+                new Claim(JwtRegisteredClaimNames.Email, user.Email ?? ""),
                 new Claim(CustomClaimTypes.Uid, user.Id),
                 new Claim(CustomClaimTypes.Rid, roleid)
             }

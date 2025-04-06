@@ -1,5 +1,5 @@
 ﻿using Hms.Application;
-using Hms.Application.DTOs.BasicSetup.BloodGroup;
+using Hms.Application.DTOs.Common.CommonBasicSetupDto;
 using Hms.Application.Features.BasicSetup.BloodGroups.Requests.Commands;
 using Hms.Application.Features.BasicSetup.BloodGroups.Requests.Queries;
 using Hms.Application.Responses;
@@ -22,7 +22,7 @@ namespace Hms.Api.Controllers.BasicSetup
 
         [HttpPost]
         [Route("save-bloodGroup")]
-        public async Task<ActionResult<BaseCommandResponse>> Post([FromBody] CreateBloodGroupDto bloodGroup)
+        public async Task<ActionResult<BaseCommandResponse>> Post([FromBody] CreateCommonBasicSetupDto bloodGroup)
         {
             var command = new CreateBloodGroupCommand { BloodGroupDto = bloodGroup };
             var response = await _mediator.Send(command);
@@ -31,7 +31,7 @@ namespace Hms.Api.Controllers.BasicSetup
 
         [HttpPut]
         [Route("update-bloodGroup/{id}")]
-        public async Task<ActionResult<BaseCommandResponse>> Put([FromBody] CreateBloodGroupDto bloodGroup)
+        public async Task<ActionResult<BaseCommandResponse>> Put([FromBody] CreateCommonBasicSetupDto bloodGroup)
         {
             var command = new UpdateBloodGroupCommand { BloodGroupDto = bloodGroup };
             var response = await _mediator.Send(command);
@@ -49,7 +49,7 @@ namespace Hms.Api.Controllers.BasicSetup
 
         [HttpGet]
         [Route("get-allBloodGroup")]
-        public async Task<ActionResult<List<BloodGroupDto>>> Get()
+        public async Task<ActionResult<List<CommonBasicSetupDto>>> Get()
         {
             var BloodGroup = await _mediator.Send(new GetAllBloodGroupRequest { });
             return Ok(BloodGroup);
@@ -57,7 +57,7 @@ namespace Hms.Api.Controllers.BasicSetup
 
         [HttpGet]
         [Route("get-bloodGroupDetail/{id}")]
-        public async Task<ActionResult<BloodGroupDto>> Get(int id)
+        public async Task<ActionResult<CommonBasicSetupDto>> Get(int id)
         {
             var BloodGroups = await _mediator.Send(new GetBloodGroupDetailsRequest { Id = id });
             return Ok(BloodGroups);

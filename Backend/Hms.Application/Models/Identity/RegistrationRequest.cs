@@ -26,8 +26,6 @@ namespace Hms.Application.Models.Identity
         //[Required]
         public string? PhoneNumber { get; set; }
 
-        public int? EmpId { get; set; }
-
 
         [Required]
         public bool IsActive { get; set; } = true;

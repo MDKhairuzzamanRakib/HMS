@@ -1,4 +1,4 @@
-﻿using Hms.Application.DTOs.BasicSetup.BloodGroup;
+﻿using Hms.Application.DTOs.Common.CommonBasicSetupDto;
 using Hms.Application.Responses;
 using MediatR;
 using System;
@@ -11,6 +11,6 @@ namespace Hms.Application.Features.BasicSetup.BloodGroups.Requests.Commands
 {
     public class CreateBloodGroupCommand : IRequest<BaseCommandResponse>
     {
-        public CreateBloodGroupDto BloodGroupDto { get; set; }
+        public CreateCommonBasicSetupDto BloodGroupDto { get; set; }
     }
 }

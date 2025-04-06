@@ -1786,13 +1786,45 @@ namespace Hms.Persistence.Migrations
                     b.ToTable("RoomPricing");
                 });
 
+            modelBuilder.Entity("Hms.Domain.UserManage.AspNetRoleClaims", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("RoleId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id")
+                        .HasName("PK_AspNetRoleClaims");
+
+                    b.ToTable("AspNetRoleClaims");
+                });
+
             modelBuilder.Entity("Hms.Domain.UserManage.AspNetRoles", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("ConcurrencyStamp")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NormalizedName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id")
@@ -1809,13 +1841,64 @@ namespace Hms.Persistence.Migrations
                         new
                         {
                             Id = "8692fe73-efe2-4fd2-94be-4545f88be14d",
-                            Name = "User"
+                            ConcurrencyStamp = "d95d2e30-a520-493c-b0e0-809936bbd537",
+                            Name = "User",
+                            NormalizedName = "USER"
                         },
                         new
                         {
                             Id = "a7a25bd6-da61-43c8-93db-ba4d08642ad9",
-                            Name = "Admin"
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
                         });
+                });
+
+            modelBuilder.Entity("Hms.Domain.UserManage.AspNetUserClaims", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClaimValue")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id")
+                        .HasName("PK_AspNetUserClaims");
+
+                    b.ToTable("AspNetUserClaims");
+                });
+
+            modelBuilder.Entity("Hms.Domain.UserManage.AspNetUserLogins", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderKey")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("LoginProvider", "ProviderKey")
+                        .HasName("PK_AspNetUserLogins");
+
+                    b.ToTable("AspNetUserLogins");
                 });
 
             modelBuilder.Entity("Hms.Domain.UserManage.AspNetUserRoles", b =>
@@ -1851,6 +1934,27 @@ namespace Hms.Persistence.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Hms.Domain.UserManage.AspNetUserTokens", b =>
+                {
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("LoginProvider")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Value")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("UserId", "LoginProvider", "Name")
+                        .HasName("PK_AspNetUserTokens");
+
+                    b.ToTable("AspNetUserTokens");
+                });
+
             modelBuilder.Entity("Hms.Domain.UserManage.AspNetUsers", b =>
                 {
                     b.Property<string>("Id")
@@ -1861,6 +1965,9 @@ namespace Hms.Persistence.Migrations
 
                     b.Property<bool?>("CanEditProfile")
                         .HasColumnType("bit");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -1876,6 +1983,15 @@ namespace Hms.Persistence.Migrations
 
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("InActiveBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("InActiveDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool?>("IsActive")
+                        .HasColumnType("bit");
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("nvarchar(max)");
@@ -1907,7 +2023,13 @@ namespace Hms.Persistence.Migrations
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("Status")
+                    b.Property<string>("RoleName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool?>("Status")
                         .HasColumnType("bit");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -1931,18 +2053,17 @@ namespace Hms.Persistence.Migrations
                         {
                             Id = "0ad790b9-331b-47a0-b707-8bbb6e2ef1dd",
                             AccessFailedCount = 0,
-                            DateCreated = new DateTime(2025, 3, 24, 13, 21, 56, 834, DateTimeKind.Local).AddTicks(5094),
+                            DateCreated = new DateTime(2025, 4, 6, 13, 36, 22, 817, DateTimeKind.Local).AddTicks(8856),
                             Email = "guest@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "System",
-                            LastModifiedDate = new DateTime(2025, 3, 24, 13, 21, 56, 836, DateTimeKind.Local).AddTicks(4120),
+                            LastModifiedDate = new DateTime(2025, 4, 6, 13, 36, 22, 819, DateTimeKind.Local).AddTicks(4201),
                             LastName = "Guest",
                             LockoutEnabled = true,
                             NormalizedEmail = "GUEST@LOCALHOST.COM",
                             NormalizedUserName = "GUEST",
-                            PasswordHash = "AQAAAAIAAYagAAAAEA3E5q+nL1yF3y2iPSDF5eGzTXVRVb6P0QmFYSo7Pa05/LDKKeiTK8r2ntQ44z8rHA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEDxZN297dQH7tM12z/7ivXLAqGtV/emcOyqCTHf9xExVuDLxje5ZDdOisbmfaaCZVQ==",
                             PhoneNumberConfirmed = false,
-                            Status = false,
                             TwoFactorEnabled = false,
                             UserName = "guest"
                         },
@@ -1950,18 +2071,17 @@ namespace Hms.Persistence.Migrations
                         {
                             Id = "15b95c84-5f38-4318-a5c1-114e4d459980",
                             AccessFailedCount = 0,
-                            DateCreated = new DateTime(2025, 3, 24, 13, 21, 57, 29, DateTimeKind.Local).AddTicks(9216),
+                            DateCreated = new DateTime(2025, 4, 6, 13, 36, 22, 927, DateTimeKind.Local).AddTicks(7876),
                             Email = "user@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "System",
-                            LastModifiedDate = new DateTime(2025, 3, 24, 13, 21, 57, 29, DateTimeKind.Local).AddTicks(9240),
+                            LastModifiedDate = new DateTime(2025, 4, 6, 13, 36, 22, 927, DateTimeKind.Local).AddTicks(7921),
                             LastName = "User",
                             LockoutEnabled = true,
                             NormalizedEmail = "USER@LOCALHOST.COM",
                             NormalizedUserName = "USER",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJAyQiZcc0y8lK3MM9cMmYhjYvb7Yll+m1StLfz0zhxKn6WAUPQgJhX4EfGTrvFNqg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEBdzd+ePhyljLJaWuJo3xhNEDTBtzijy9JD+qybzirAAmLLmuNH1t5Zr5FvjP5Ocsw==",
                             PhoneNumberConfirmed = false,
-                            Status = false,
                             TwoFactorEnabled = false,
                             UserName = "user"
                         },
@@ -1969,18 +2089,17 @@ namespace Hms.Persistence.Migrations
                         {
                             Id = "1f2f4587-b2f3-4421-984d-0a576465c1c7",
                             AccessFailedCount = 0,
-                            DateCreated = new DateTime(2025, 3, 24, 13, 21, 57, 148, DateTimeKind.Local).AddTicks(4651),
+                            DateCreated = new DateTime(2025, 4, 6, 13, 36, 23, 53, DateTimeKind.Local).AddTicks(374),
                             Email = "admin@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "System",
-                            LastModifiedDate = new DateTime(2025, 3, 24, 13, 21, 57, 148, DateTimeKind.Local).AddTicks(4666),
+                            LastModifiedDate = new DateTime(2025, 4, 6, 13, 36, 23, 53, DateTimeKind.Local).AddTicks(390),
                             LastName = "Admin",
                             LockoutEnabled = true,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEDo9x3wNXpfPbKbAiu2kTskP5RXqPooPjueMC8O0tWYmX6cC5HEOOC4LOUzNBI8Nqw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENBTWRa3DOm/RgpF1ToIIrXBbCsCg/KsqL1oW0d9HlXza/2jm35Ja9UE9cYR5NFmsw==",
                             PhoneNumberConfirmed = false,
-                            Status = false,
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         });

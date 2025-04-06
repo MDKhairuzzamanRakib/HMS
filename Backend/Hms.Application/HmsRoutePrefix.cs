@@ -14,6 +14,7 @@ namespace Hms.Application
         #region BasicSetup
         public const string BloodGroup = HMSRoutePrefixBase + "bloodGroup";
         public const string CategoryType = HMSRoutePrefixBase + "categoryType";
+        public const string Gender = HMSRoutePrefixBase + "gender";
 
         #endregion
     }

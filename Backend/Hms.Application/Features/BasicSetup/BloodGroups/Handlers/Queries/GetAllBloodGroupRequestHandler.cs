@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Hms.Application.Contracts.Persistence;
-using Hms.Application.DTOs.BasicSetup.BloodGroup;
+using Hms.Application.DTOs.Common.CommonBasicSetupDto;
 using Hms.Application.Features.BasicSetup.BloodGroups.Requests.Queries;
 using Hms.Domain.BasicSetup;
 using MediatR;
@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace Hms.Application.Features.BasicSetup.BloodGroups.Handlers.Queries
 {
-    public class GetAllBloodGroupRequestHandler : IRequestHandler<GetAllBloodGroupRequest, List<BloodGroupDto>>
+    public class GetAllBloodGroupRequestHandler : IRequestHandler<GetAllBloodGroupRequest, List<CommonBasicSetupDto>>
     {
         public readonly IHmsRepository<BloodGroup> _bloodGroupRepository;
         public readonly IMapper _mapper;
@@ -23,11 +23,11 @@ namespace Hms.Application.Features.BasicSetup.BloodGroups.Handlers.Queries
             _mapper = mapper;
         }
 
-        public async Task<List<BloodGroupDto>> Handle(GetAllBloodGroupRequest request, CancellationToken cancellationToken)
+        public async Task<List<CommonBasicSetupDto>> Handle(GetAllBloodGroupRequest request, CancellationToken cancellationToken)
         {
             var bloodGroups = await _bloodGroupRepository.Where(x => x.Status).OrderBy(x => x.Position).ToListAsync();
 
-            var bloodGroupDto = _mapper.Map<List<BloodGroupDto>>(bloodGroups);
+            var bloodGroupDto = _mapper.Map<List<CommonBasicSetupDto>>(bloodGroups);
 
             return bloodGroupDto;
         }
