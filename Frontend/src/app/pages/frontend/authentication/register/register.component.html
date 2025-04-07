@@ -25,21 +25,22 @@
                             <span class="text-muted-color font-medium">Create a new account</span>
                         </div>
 
+                        <form #form="ngForm" (ngSubmit)="onSubmit(form)">
                         <div>
                             <div class="flex flex-col sm:flex-row sm:items-center gap-3 mb-4">
                                 <div class="flex-auto">
                                     <p-floatlabel variant="on">
-                                        <input pInputText id="first_name" [(ngModel)]="userRegister.firstName" autocomplete="off" pSize="large" #firstName="ngModel" required
-                                        [ngClass]="{'ng-invalid ng-dirty': (firstName.invalid && firstName.touched)}" class="w-full md:w-[15rem]"
+                                        <input pInputText id="first_name" [(ngModel)]="userRegister.firstName" autocomplete="off" pSize="large" #firstName="ngModel" required name="firstName"
+                                        [ngClass]="{'ng-invalid ng-dirty': (firstName.invalid && firstName.touched)}" class="w-full md:w-[14rem]"
                                         />
                                         <label for="first_name">First Name</label>
                                     </p-floatlabel>
                                 </div>
                                 <div class="flex-auto">
                                     <p-floatlabel variant="on">
-                                        <input pInputText id="last_name" [(ngModel)]="userRegister.lastName" autocomplete="off" pSize="large" #lastName="ngModel" required
+                                        <input pInputText id="last_name" [(ngModel)]="userRegister.lastName" autocomplete="off" pSize="large" #lastName="ngModel" required name="lastName"
                                         [ngClass]="{'ng-invalid ng-dirty': (lastName.invalid && lastName.touched)}"
-                                        class="w-full md:w-[15rem]"
+                                        class="w-full md:w-[14rem]"
                                         />
                                         <label for="last_name">Last Name</label>
                                     </p-floatlabel>
@@ -49,29 +50,58 @@
                             <div class="flex flex-col sm:flex-row sm:items-center gap-3 mb-4">
                                 <div class="flex-auto">
                                     <p-floatlabel variant="on">
-                                        <p-datepicker [(ngModel)]="userRegister.dateOfBirth" inputId="dateOfBirth" showIcon iconDisplay="input" autocomplete="off" size="large" #dateOfBirth="ngModel" required [showButtonBar]="true" 
-                                        [ngClass]="{'ng-invalid ng-dirty': (dateOfBirth.invalid && dateOfBirth.touched)}" class="w-full md:w-[15rem]"
-                                        dateFormat="dd.mm.yy"/>
-                                        <label for="dateOfBirth">Date of Birth</label>
+                                        <p-datepicker 
+                                        [(ngModel)]="userRegister.dateOfBirth"
+                                        dateFormat="dd/mm/yy"
+                                        showIcon iconDisplay="input" 
+                                        [readonlyInput]="true"
+                                        [showButtonBar]="true"
+                                        #dateOfBirth="ngModel"
+                                        required
+                                        id="dateOfBirth"
+                                        autocomplete="off"
+                                        name="dateOfBirth"
+                                        size="large"
+                                        [ngClass]="{'ng-invalid ng-dirty': (dateOfBirth.invalid && dateOfBirth.touched)}"
+                                        class="custom-datepicker" />
+                                     <label for="dateOfBirth">Date of Birth</label>
                                     </p-floatlabel>
                                 </div>
+                                
                                 <div class="flex-auto">
                                     <p-floatlabel variant="on">
-                                        <input pInputText id="last_name" [(ngModel)]="userRegister.lastName" autocomplete="off" pSize="large" #lastName="ngModel" required
-                                        [ngClass]="{'ng-invalid ng-dirty': (lastName.invalid && lastName.touched)}"
+                                        <p-select [(ngModel)]="selectedGender" inputId="gender" [options]="genders" optionLabel="name" styleClass="w-full" autocomplete="off" size="large" #gender="ngModel" required name="gender"
+                                        [ngClass]="{'ng-invalid ng-dirty': (gender.invalid && gender.touched)}"
+                                        class="w-full md:w-[14rem]"
                                         />
-                                        <label for="last_name">Last Name</label>
+                                        <label for="gender">Gender</label>
                                     </p-floatlabel>
                                 </div>
                             </div>
 
                             
+                            <div class="mb-4">
+                                <p-floatlabel variant="on">
+                                    <input pInputText id="email" [(ngModel)]="userRegister.email" autocomplete="off" pSize="large" #email="ngModel" required
+                                    [ngClass]="{'ng-invalid ng-dirty': (email.invalid && email.touched)}" class="w-full" name="email"
+                                    />
+                                    <label for="email">Email Address</label>
+                                </p-floatlabel>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <p-floatlabel variant="on">
+                                    <p-password id="password1" [(ngModel)]="userRegister.password" [toggleMask]="true" [fluid]="true" [feedback]="true" size="large" #password="ngModel" required name="password"
+                                    [ngClass]="{'ng-invalid ng-dirty': (password.invalid && password.touched)}" class="w-full"
+                                    ></p-password>
+                                    <label for="email">Password</label>
+                                </p-floatlabel>
+                            </div>
 
-                            <!-- <label for="password1" class="block text-surface-900 dark:text-surface-0 font-medium text-xl mb-2">Password</label>
-                            <p-password id="password1" [(ngModel)]="password" placeholder="Password" [toggleMask]="true" styleClass="mb-4" [fluid]="true" [feedback]="false"></p-password> -->
-
-                            <p-button label="Sign Up" styleClass="w-full" (click)="onSubmit()"></p-button>
+                            <p-button label="Sign Up" styleClass="w-full" type="submit"></p-button>
+                            <p-toast></p-toast>
                             <p class="font-medium underline mt-4 text-center cursor-pointer text-primary" routerLink="/login">Already have an account?</p>
+
                             <!-- <div class="flex gap-2 w-full">
                                 <div class="w-1/2">
                                   <p-button label="Sign In" styleClass="w-full" (click)="onSubmit()"></p-button>
@@ -80,8 +110,8 @@
                                   <p-button label="Sign Up" styleClass="w-full" (click)="onSubmit()"></p-button>
                                 </div>
                             </div> -->
-                            <p-toast />
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>

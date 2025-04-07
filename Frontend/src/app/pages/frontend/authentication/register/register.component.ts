@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
@@ -15,31 +15,40 @@ import { UserRegister } from '../models/user-register';
 import { FloatLabel } from 'primeng/floatlabel';
 import { CommonModule } from '@angular/common';
 import { DatePicker } from 'primeng/datepicker';
+import { Subscription } from 'rxjs';
+import { SelectedModel } from '../../../../core/models/selectedModel';
+import { Select } from 'primeng/select';
+import { GenderService } from '../../basic-setup/services/gender.service';
 
 @Component({
   selector: 'app-register',
-  imports: [ButtonModule, CheckboxModule, InputTextModule, PasswordModule, FormsModule, RouterModule, RippleModule, AppFloatingConfigurator, ToastModule, MessageModule, FloatLabel, CommonModule, DatePicker],
+  imports: [ButtonModule, CheckboxModule, InputTextModule, PasswordModule, FormsModule, RouterModule, RippleModule, AppFloatingConfigurator, ToastModule, MessageModule, FloatLabel, CommonModule, DatePicker, Select],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
-  providers: [MessageService]
+  providers: [MessageService, GenderService]
 })
 export class RegisterComponent implements OnInit {
-  
+  subscription: Subscription[]=[]
   loggedIn: boolean = false;
   submitted = false;
   loading = false;
+  genders : SelectedModel[] = [];
+  selectedGender : any;
+  selectedDate : any;
 
   userRegister : UserRegister = new UserRegister();
 
   constructor(
     private router: Router,
     private authService: AuthService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    public genderService : GenderService,
   ){
 
   }
 
   ngOnInit() {
+    this.getSelectedGenders();
     if(this.authService.currentUserValue!=null&&this.authService.currentUserValue.token!=null) {
       this.authService.verifyToken(this.authService.currentUserValue.token).subscribe({
         next: response => {
@@ -55,8 +64,29 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  onSubmit(){
-    
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.forEach(subs=>subs.unsubscribe());
+    }
+}
+
+getSelectedGenders(){
+    this.subscription.push(
+        this.genderService.getSelectedGender().subscribe((res) => {
+            this.genders = res;
+      })
+    )
+}
+
+
+  onSubmit(form: NgForm){
+    if (form.valid) {
+      
+    } else {
+      Object.values(form.controls).forEach(control => {
+        control.markAsTouched();
+      });
+    }
   }
 
 }

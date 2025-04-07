@@ -1,3 +1,21 @@
-p-datepicker {
-    width: 100%;
-}
+::ng-deep .custom-datepicker {
+    width: 100% !important;
+    display: block !important; /* Prevent inline sizing */
+  }
+  
+  ::ng-deep .custom-datepicker .p-inputwrapper {
+    width: 100% !important; /* This is an internal wrapper */
+  }
+  
+  ::ng-deep .custom-datepicker .p-inputtext {
+    width: 100% !important;
+  }
+  
+  @media (min-width: 575px) {
+    ::ng-deep .custom-datepicker .p-inputtext {
+      width: 14rem !important;
+    }
+    ::ng-deep .custom-datepicker .p-inputwrapper {
+        width: 14rem !important;
+    }
+  }
