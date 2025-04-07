@@ -1,11 +1,11 @@
 export class UserRegister {
-    firstName : string | null = null;
-    lastName : string | null = null;
-    email : string | null = null;
-    userName : string | null = null;
-    phoneNumber : string | null = null;
+    firstName : string = "";
+    lastName : string = "";
+    email : string = "";
+    userName : string = "";
+    phoneNumber : string = "";
     isActive: boolean = true;
-    password : string | null = null;
+    password : string = "";
     canEditProfile: boolean = true;
     
     dateOfBirth : Date | null = null;
