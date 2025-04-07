@@ -61,5 +61,8 @@ export class AuthService {
     return this.http.post<any>(`${environment.securityUrl}/Account/verifyToken`,payload)
   }
 
-  
+  register(model: any) {
+    return this.http.post(`${environment.securityUrl}/Account/register`, model);
+  }
+
 }

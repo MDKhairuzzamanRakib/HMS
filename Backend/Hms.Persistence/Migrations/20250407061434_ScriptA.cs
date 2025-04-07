@@ -1217,9 +1217,18 @@ namespace Hms.Persistence.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "CanEditProfile", "ConcurrencyStamp", "CreatedBy", "DateCreated", "Email", "EmailConfirmed", "FirstName", "InActiveBy", "InActiveDate", "IsActive", "LastModifiedBy", "LastModifiedDate", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "RoleName", "SecurityStamp", "Status", "TwoFactorEnabled", "UserName", "UserTypeId" },
                 values: new object[,]
                 {
-                    { "0ad790b9-331b-47a0-b707-8bbb6e2ef1dd", 0, null, null, null, new DateTime(2025, 4, 6, 13, 36, 22, 817, DateTimeKind.Local).AddTicks(8856), "guest@localhost.com", true, "System", null, null, null, null, new DateTime(2025, 4, 6, 13, 36, 22, 819, DateTimeKind.Local).AddTicks(4201), "Guest", true, null, "GUEST@LOCALHOST.COM", "GUEST", "AQAAAAIAAYagAAAAEDxZN297dQH7tM12z/7ivXLAqGtV/emcOyqCTHf9xExVuDLxje5ZDdOisbmfaaCZVQ==", null, false, null, null, null, false, "guest", null },
-                    { "15b95c84-5f38-4318-a5c1-114e4d459980", 0, null, null, null, new DateTime(2025, 4, 6, 13, 36, 22, 927, DateTimeKind.Local).AddTicks(7876), "user@localhost.com", true, "System", null, null, null, null, new DateTime(2025, 4, 6, 13, 36, 22, 927, DateTimeKind.Local).AddTicks(7921), "User", true, null, "USER@LOCALHOST.COM", "USER", "AQAAAAIAAYagAAAAEBdzd+ePhyljLJaWuJo3xhNEDTBtzijy9JD+qybzirAAmLLmuNH1t5Zr5FvjP5Ocsw==", null, false, null, null, null, false, "user", null },
-                    { "1f2f4587-b2f3-4421-984d-0a576465c1c7", 0, null, null, null, new DateTime(2025, 4, 6, 13, 36, 23, 53, DateTimeKind.Local).AddTicks(374), "admin@localhost.com", true, "System", null, null, null, null, new DateTime(2025, 4, 6, 13, 36, 23, 53, DateTimeKind.Local).AddTicks(390), "Admin", true, null, "ADMIN@LOCALHOST.COM", "ADMIN", "AQAAAAIAAYagAAAAENBTWRa3DOm/RgpF1ToIIrXBbCsCg/KsqL1oW0d9HlXza/2jm35Ja9UE9cYR5NFmsw==", null, false, null, null, null, false, "admin", null }
+                    { "0ad790b9-331b-47a0-b707-8bbb6e2ef1dd", 0, null, null, null, new DateTime(2025, 4, 7, 12, 14, 31, 277, DateTimeKind.Local).AddTicks(8081), "guest@localhost.com", true, "System", null, null, null, null, new DateTime(2025, 4, 7, 12, 14, 31, 277, DateTimeKind.Local).AddTicks(8142), "Guest", true, null, "GUEST@LOCALHOST.COM", "GUEST", "AQAAAAIAAYagAAAAEPBTd+vU2SCUMsK+ByVVnNFU/B6OSZuBQyCrZYeM1RrTsrIaKGL6DB2+9uiuvZu99Q==", null, false, null, null, null, false, "guest", null },
+                    { "15b95c84-5f38-4318-a5c1-114e4d459980", 0, null, null, null, new DateTime(2025, 4, 7, 12, 14, 31, 446, DateTimeKind.Local).AddTicks(5006), "user@localhost.com", true, "System", null, null, null, null, new DateTime(2025, 4, 7, 12, 14, 31, 446, DateTimeKind.Local).AddTicks(5023), "User", true, null, "USER@LOCALHOST.COM", "USER", "AQAAAAIAAYagAAAAECMyHQuBORmhpaj5qmvUFthGhD9NerDwZNNCaDlJ75/kCI/ZewY2jDeze3ibS3gN6A==", null, false, null, null, null, false, "user", null },
+                    { "1f2f4587-b2f3-4421-984d-0a576465c1c7", 0, null, null, null, new DateTime(2025, 4, 7, 12, 14, 31, 548, DateTimeKind.Local).AddTicks(7948), "admin@localhost.com", true, "System", null, null, null, null, new DateTime(2025, 4, 7, 12, 14, 31, 548, DateTimeKind.Local).AddTicks(7962), "Admin", true, null, "ADMIN@LOCALHOST.COM", "ADMIN", "AQAAAAIAAYagAAAAEFoRbyVfzqX6pIrYoyYACdfpNpMSD222289jZ/XB5FwysWNUN8ngOUDRG2eg88LCjw==", null, false, null, null, null, false, "admin", null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "UserType",
+                columns: new[] { "Id", "CreatedBy", "DateCreated", "Description", "LastModifiedBy", "LastModifiedDate", "Position", "Status", "TypeName" },
+                values: new object[,]
+                {
+                    { 1, null, new DateTime(2025, 4, 7, 12, 14, 31, 148, DateTimeKind.Local).AddTicks(2150), null, null, new DateTime(2025, 4, 7, 12, 14, 31, 149, DateTimeKind.Local).AddTicks(8241), 1, true, "Guest" },
+                    { 2, null, new DateTime(2025, 4, 7, 12, 14, 31, 150, DateTimeKind.Local).AddTicks(323), null, null, new DateTime(2025, 4, 7, 12, 14, 31, 150, DateTimeKind.Local).AddTicks(327), 2, true, "Staff" }
                 });
 
             migrationBuilder.InsertData(

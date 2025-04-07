@@ -15,44 +15,44 @@ import { UserRegister } from '../models/user-register';
 import { FloatLabel } from 'primeng/floatlabel';
 import { CommonModule } from '@angular/common';
 import { DatePicker } from 'primeng/datepicker';
-import { Subscription } from 'rxjs';
+import { from, Subscription } from 'rxjs';
 import { SelectedModel } from '../../../../core/models/selectedModel';
 import { Select } from 'primeng/select';
 import { GenderService } from '../../basic-setup/services/gender.service';
 
 @Component({
   selector: 'app-register',
-  imports: [ButtonModule, CheckboxModule, InputTextModule, PasswordModule, FormsModule, RouterModule, RippleModule, AppFloatingConfigurator, ToastModule, MessageModule, FloatLabel, CommonModule, DatePicker, Select],
+  imports: [ButtonModule, CheckboxModule, InputTextModule, PasswordModule, FormsModule, RouterModule, Ripple, AppFloatingConfigurator, Toast, MessageModule, FloatLabel, CommonModule, DatePicker, Select],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
   providers: [MessageService, GenderService]
 })
 export class RegisterComponent implements OnInit {
-  subscription: Subscription[]=[]
+  subscription: Subscription[] = []
   loggedIn: boolean = false;
   submitted = false;
   loading = false;
-  genders : SelectedModel[] = [];
-  selectedGender : any;
-  selectedDate : any;
+  genders: SelectedModel[] = [];
+  selectedGender: any;
+  selectedDate: any;
 
-  userRegister : UserRegister = new UserRegister();
+  userRegister: UserRegister = new UserRegister();
 
   constructor(
     private router: Router,
     private authService: AuthService,
     private messageService: MessageService,
-    public genderService : GenderService,
-  ){
+    public genderService: GenderService,
+  ) {
 
   }
 
   ngOnInit() {
     this.getSelectedGenders();
-    if(this.authService.currentUserValue!=null&&this.authService.currentUserValue.token!=null) {
+    if (this.authService.currentUserValue != null && this.authService.currentUserValue.token != null) {
       this.authService.verifyToken(this.authService.currentUserValue.token).subscribe({
         next: response => {
-          if(response.success) {
+          if (response.success) {
             this.loggedIn = true;
             this.router.navigate([""])
           } else {
@@ -66,22 +66,53 @@ export class RegisterComponent implements OnInit {
 
   ngOnDestroy(): void {
     if (this.subscription) {
-      this.subscription.forEach(subs=>subs.unsubscribe());
+      this.subscription.forEach(subs => subs.unsubscribe());
     }
-}
+  }
 
-getSelectedGenders(){
+  getSelectedGenders() {
     this.subscription.push(
-        this.genderService.getSelectedGender().subscribe((res) => {
-            this.genders = res;
+      this.genderService.getSelectedGender().subscribe((res) => {
+        this.genders = res;
       })
     )
-}
+  }
 
 
-  onSubmit(form: NgForm){
+  onSubmit(form: NgForm) {
     if (form.valid) {
-      
+      this.userRegister.genderId = form.value.gender.id;
+      this.userRegister.userName = form.value.email;
+      this.subscription.push(
+        this.authService.register(this.userRegister).subscribe((res: any) => {
+          if (res.success) {
+            this.subscription.push(
+              this.authService
+                .login(this.userRegister.userName, this.userRegister.password, true)
+                .subscribe({
+                  next: res => {
+                    if (res) {
+                      const role = this.authService.currentUserValue.role;
+                      this.router.navigate(['']);
+                      this.loading = false;
+                      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Login Successfull' });
+                    } else {
+                      this.submitted = false;
+                      this.loading = false;
+                    }
+                  },
+                  error: err => {
+                    this.submitted = false;
+                    this.loading = false;
+                  }
+                })
+            )
+          }
+          else {
+            this.messageService.add({ severity: 'error', summary: 'Failed', detail: res.message });
+          }
+        })
+      )
     } else {
       Object.values(form.controls).forEach(control => {
         control.markAsTouched();

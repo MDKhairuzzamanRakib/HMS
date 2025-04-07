@@ -651,6 +651,26 @@ namespace Hms.Persistence.Migrations
                         .HasName("PK_UserType");
 
                     b.ToTable("UserType");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DateCreated = new DateTime(2025, 4, 7, 12, 14, 31, 148, DateTimeKind.Local).AddTicks(2150),
+                            LastModifiedDate = new DateTime(2025, 4, 7, 12, 14, 31, 149, DateTimeKind.Local).AddTicks(8241),
+                            Position = 1,
+                            Status = true,
+                            TypeName = "Guest"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DateCreated = new DateTime(2025, 4, 7, 12, 14, 31, 150, DateTimeKind.Local).AddTicks(323),
+                            LastModifiedDate = new DateTime(2025, 4, 7, 12, 14, 31, 150, DateTimeKind.Local).AddTicks(327),
+                            Position = 2,
+                            Status = true,
+                            TypeName = "Staff"
+                        });
                 });
 
             modelBuilder.Entity("Hms.Domain.BookingInfos.BookingInfo", b =>
@@ -2053,16 +2073,16 @@ namespace Hms.Persistence.Migrations
                         {
                             Id = "0ad790b9-331b-47a0-b707-8bbb6e2ef1dd",
                             AccessFailedCount = 0,
-                            DateCreated = new DateTime(2025, 4, 6, 13, 36, 22, 817, DateTimeKind.Local).AddTicks(8856),
+                            DateCreated = new DateTime(2025, 4, 7, 12, 14, 31, 277, DateTimeKind.Local).AddTicks(8081),
                             Email = "guest@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "System",
-                            LastModifiedDate = new DateTime(2025, 4, 6, 13, 36, 22, 819, DateTimeKind.Local).AddTicks(4201),
+                            LastModifiedDate = new DateTime(2025, 4, 7, 12, 14, 31, 277, DateTimeKind.Local).AddTicks(8142),
                             LastName = "Guest",
                             LockoutEnabled = true,
                             NormalizedEmail = "GUEST@LOCALHOST.COM",
                             NormalizedUserName = "GUEST",
-                            PasswordHash = "AQAAAAIAAYagAAAAEDxZN297dQH7tM12z/7ivXLAqGtV/emcOyqCTHf9xExVuDLxje5ZDdOisbmfaaCZVQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEPBTd+vU2SCUMsK+ByVVnNFU/B6OSZuBQyCrZYeM1RrTsrIaKGL6DB2+9uiuvZu99Q==",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
                             UserName = "guest"
@@ -2071,16 +2091,16 @@ namespace Hms.Persistence.Migrations
                         {
                             Id = "15b95c84-5f38-4318-a5c1-114e4d459980",
                             AccessFailedCount = 0,
-                            DateCreated = new DateTime(2025, 4, 6, 13, 36, 22, 927, DateTimeKind.Local).AddTicks(7876),
+                            DateCreated = new DateTime(2025, 4, 7, 12, 14, 31, 446, DateTimeKind.Local).AddTicks(5006),
                             Email = "user@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "System",
-                            LastModifiedDate = new DateTime(2025, 4, 6, 13, 36, 22, 927, DateTimeKind.Local).AddTicks(7921),
+                            LastModifiedDate = new DateTime(2025, 4, 7, 12, 14, 31, 446, DateTimeKind.Local).AddTicks(5023),
                             LastName = "User",
                             LockoutEnabled = true,
                             NormalizedEmail = "USER@LOCALHOST.COM",
                             NormalizedUserName = "USER",
-                            PasswordHash = "AQAAAAIAAYagAAAAEBdzd+ePhyljLJaWuJo3xhNEDTBtzijy9JD+qybzirAAmLLmuNH1t5Zr5FvjP5Ocsw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAECMyHQuBORmhpaj5qmvUFthGhD9NerDwZNNCaDlJ75/kCI/ZewY2jDeze3ibS3gN6A==",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
                             UserName = "user"
@@ -2089,16 +2109,16 @@ namespace Hms.Persistence.Migrations
                         {
                             Id = "1f2f4587-b2f3-4421-984d-0a576465c1c7",
                             AccessFailedCount = 0,
-                            DateCreated = new DateTime(2025, 4, 6, 13, 36, 23, 53, DateTimeKind.Local).AddTicks(374),
+                            DateCreated = new DateTime(2025, 4, 7, 12, 14, 31, 548, DateTimeKind.Local).AddTicks(7948),
                             Email = "admin@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "System",
-                            LastModifiedDate = new DateTime(2025, 4, 6, 13, 36, 23, 53, DateTimeKind.Local).AddTicks(390),
+                            LastModifiedDate = new DateTime(2025, 4, 7, 12, 14, 31, 548, DateTimeKind.Local).AddTicks(7962),
                             LastName = "Admin",
                             LockoutEnabled = true,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAENBTWRa3DOm/RgpF1ToIIrXBbCsCg/KsqL1oW0d9HlXza/2jm35Ja9UE9cYR5NFmsw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEFoRbyVfzqX6pIrYoyYACdfpNpMSD222289jZ/XB5FwysWNUN8ngOUDRG2eg88LCjw==",
                             PhoneNumberConfirmed = false,
                             TwoFactorEnabled = false,
                             UserName = "admin"

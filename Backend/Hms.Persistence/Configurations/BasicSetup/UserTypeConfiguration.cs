@@ -20,12 +20,14 @@ namespace Hms.Persistence.Configurations.BasicSetup
             builder.HasData(
                 new UserType
                 {
+                    Id = 1,
                     TypeName = "Guest",
                     Position = 1,
                     Status = true,
                 },
                 new UserType
                 {
+                    Id = 2,
                     TypeName = "Staff",
                     Position = 2,
                     Status = true,
