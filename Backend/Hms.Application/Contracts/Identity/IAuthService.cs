@@ -1,4 +1,5 @@
-﻿using Hms.Application.Models.Identity;
+﻿using Hms.Application.DTOs.GuestInfos;
+using Hms.Application.Models.Identity;
 using Hms.Application.Responses;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace Hms.Application.Contracts.Identity
     {
         Task<AuthResponse> Login(AuthRequest request);
         Task<BaseCommandResponse> Register(RegistrationRequest request);
+        Task<BaseCommandResponse> CreateGuest(RegistrationRequest request, string userId);
         Task<BaseCommandResponse> UpdateUser(UpdateUserRequest request);
         Task<BaseCommandResponse> UpdateUserAndChangePassword(UpdateUserRequest request);
         Task<BaseCommandResponse> ResetPassword(UpdateUserRequest request);
