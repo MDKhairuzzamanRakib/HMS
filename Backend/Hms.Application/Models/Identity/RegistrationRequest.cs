@@ -26,6 +26,9 @@ namespace Hms.Application.Models.Identity
         //[Required]
         public string? PhoneNumber { get; set; }
 
+        public DateOnly? DateOfBirth { get; set; }
+        public int? GenderId { get; set; }
+
 
         [Required]
         public bool IsActive { get; set; } = true;

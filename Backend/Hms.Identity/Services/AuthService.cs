@@ -1,11 +1,14 @@
 ﻿using Hms.Application.Constants;
 using Hms.Application.Contracts.Identity;
 using Hms.Application.Contracts.Persistence;
+using Hms.Application.DTOs.GuestInfos;
 using Hms.Application.Exceptions;
+using Hms.Application.Features.GuestInfos.Requests.Commands;
 using Hms.Application.Models.Identity;
 using Hms.Application.Responses;
 using Hms.Domain.UserManage;
 using Hms.Identity.Models;
+using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -29,9 +32,10 @@ namespace Hms.Identity.Services
         private readonly IHmsRepository<AspNetUserRoles> _aspNetUserRolesRepository;
         private readonly IHmsRepository<AspNetRoles> _aspNetRolesRepository;
         private readonly JwtSettings _jwtSettings;
+        private readonly IMediator _mediator;
         public AuthService(RoleManager<IdentityRole> roleManager, UserManager<ApplicationUser> userManager,
         IOptions<JwtSettings> jwtSettings,
-            SignInManager<ApplicationUser> signInManager, IHmsRepository<AspNetUsers> aspNetUserRepository, IHmsRepository<AspNetUserRoles> aspNetUserRolesRepository, IHmsRepository<AspNetRoles> aspNetRolesRepository)
+            SignInManager<ApplicationUser> signInManager, IHmsRepository<AspNetUsers> aspNetUserRepository, IHmsRepository<AspNetUserRoles> aspNetUserRolesRepository, IHmsRepository<AspNetRoles> aspNetRolesRepository, IMediator mediator)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -40,6 +44,7 @@ namespace Hms.Identity.Services
             _aspNetUserRepository = aspNetUserRepository;
             _aspNetUserRolesRepository = aspNetUserRolesRepository;
             _aspNetRolesRepository = aspNetRolesRepository;
+            _mediator = mediator;
         }
 
         public async Task<AuthResponse> Login(AuthRequest request)
@@ -105,9 +110,6 @@ namespace Hms.Identity.Services
 
             var existingUser = await _userManager.FindByNameAsync(request.UserName);
 
-            //IQueryable<AspNetUsers> pNoFound = _aspNetUserRepository.Where(x => x.PNo.ToLower() == request.PNo.ToLower());
-
-            //var existingEmail = await _userManager.FindByEmailAsync(request.Email);
 
             if (existingUser != null)
             {
@@ -115,17 +117,6 @@ namespace Hms.Identity.Services
                 response.Message = $"Registration Failed, UserName '{request.UserName}' already Exists.";
             }
 
-            //else if (pNoFound.Any())
-            //{
-            //    response.Success = false;
-            //    response.Message = $"Registration Failed, pNo '{request.PNo}' already Exists.";
-            //}
-
-            //else if (existingEmail != null)
-            //{
-            //    response.Success = false;
-            //    response.Message = $"Registration Failed, Email '{request.Email}' already Exists.";
-            //}
 
             else
             {
@@ -133,10 +124,21 @@ namespace Hms.Identity.Services
 
                 if (result.Succeeded)
                 {
-                    await _userManager.AddToRoleAsync(user, "User");
-                    response.StringId = user.Id;
-                    response.Success = true;
-                    response.Message = $"Register Successfull, UserName : '{request.UserName}'.";
+                    //response.StringId = user.Id;
+                    var guestResult = await CreateGuest(request, user.Id);
+
+                    if (guestResult.Success)
+                    {
+                        await _userManager.AddToRoleAsync(user, "User");
+                        response.Success = true;
+                        response.Message = $"Register Successfull, UserName : '{request.UserName}'.";
+                    }
+                    else
+                    {
+                        var deleteUser = _userManager.DeleteAsync(user);
+                        response.Success = true;
+                        response.Message = $"Register Failed!";
+                    }
                 }
                 else
                 {
@@ -145,6 +147,22 @@ namespace Hms.Identity.Services
                 }
             }
 
+            return response;
+        }
+
+        public async Task<BaseCommandResponse> CreateGuest(RegistrationRequest request, string userId)
+        {
+            var guestInfoDto = new CreateGuestInfoDto { 
+                FirstName = request.FirstName,
+                LastName = request.LastName,
+                Email = request.UserName,
+                DateOfBirth = request.DateOfBirth,
+                GenderId = request.GenderId,
+                AspNetUserId = userId
+            };
+
+            var command = new CreateGuestInfoCommand { GuestInfoDto = guestInfoDto };
+            var response = await _mediator.Send(command);
             return response;
         }
 

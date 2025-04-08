@@ -30,7 +30,6 @@
 	  <Folder Include="Controllers\BookingInfos\" />
 	  <Folder Include="Controllers\Common\" />
 	  <Folder Include="Controllers\EmployeeInfos\" />
-	  <Folder Include="Controllers\GuestInfos\" />
 	  <Folder Include="Controllers\HotelInfos\" />
 	  <Folder Include="Controllers\OrganogramSetup\" />
 	  <Folder Include="Controllers\PaymentInfos\" />

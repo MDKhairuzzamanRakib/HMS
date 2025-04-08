@@ -5,7 +5,6 @@ import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
-import { Ripple, RippleModule } from 'primeng/ripple';
 import { Toast, ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { MessageModule } from 'primeng/message';
@@ -22,7 +21,7 @@ import { GenderService } from '../../basic-setup/services/gender.service';
 
 @Component({
   selector: 'app-register',
-  imports: [ButtonModule, CheckboxModule, InputTextModule, PasswordModule, FormsModule, RouterModule, Ripple, AppFloatingConfigurator, Toast, MessageModule, FloatLabel, CommonModule, DatePicker, Select],
+  imports: [ButtonModule, CheckboxModule, InputTextModule, PasswordModule, FormsModule, RouterModule,  AppFloatingConfigurator, Toast, MessageModule, FloatLabel, CommonModule, DatePicker, Select],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
   providers: [MessageService, GenderService]
@@ -83,6 +82,7 @@ export class RegisterComponent implements OnInit {
     if (form.valid) {
       this.userRegister.genderId = form.value.gender.id;
       this.userRegister.userName = form.value.email;
+      this.userRegister.dateOfBirth = form.value.dateOfBirth.toISOString().split('T')[0];
       this.subscription.push(
         this.authService.register(this.userRegister).subscribe((res: any) => {
           if (res.success) {
