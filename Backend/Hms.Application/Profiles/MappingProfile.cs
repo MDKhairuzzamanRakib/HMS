@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Hms.Application.DTOs.Common.CommonBasicSetupDto;
+using Hms.Application.DTOs.GuestInfos;
 using Hms.Domain.BasicSetup;
+using Hms.Domain.GuestInfos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +25,11 @@ namespace Hms.Application.Profiles
             CreateMap<Gender, CreateCommonBasicSetupDto>().ReverseMap();
             CreateMap<Gender, CommonBasicSetupDto>().ReverseMap();
 
+            #endregion
+
+            #region GuestInfo
+            CreateMap<GuestInfo, CreateGuestInfoDto>().ReverseMap();
+            CreateMap<GuestInfo, GuestInfoDto>().ReverseMap();
             #endregion
         }
     }

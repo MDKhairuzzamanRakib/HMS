@@ -10,7 +10,6 @@
 		<Folder Include="DTOs\BasicSetup\" />
 		<Folder Include="DTOs\BookingInfos\" />
 		<Folder Include="DTOs\EmployeeInfos\" />
-		<Folder Include="DTOs\GuestInfos\" />
 		<Folder Include="DTOs\HotelInfos\" />
 		<Folder Include="DTOs\OrganogramSetup\" />
 		<Folder Include="DTOs\PaymentInfos\" />
@@ -23,7 +22,6 @@
 		<Folder Include="Features\UserManage\" />
 		<Folder Include="Features\BookingInfos\" />
 		<Folder Include="Features\EmployeeInfos\" />
-		<Folder Include="Features\GuestInfos\" />
 		<Folder Include="Features\HotelInfos\" />
 		<Folder Include="Features\OrganogramSetup\" />
 		<Folder Include="Features\PaymentInfos\" />
