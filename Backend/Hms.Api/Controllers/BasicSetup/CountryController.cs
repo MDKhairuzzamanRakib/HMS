@@ -8,7 +8,7 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Hms.Api.Controllers
+namespace Hms.Api.Controllers.BasicSetup
 {
     [Route(HmsRoutePrefix.Country)]
     [ApiController]
@@ -65,7 +65,7 @@ namespace Hms.Api.Controllers
 
         [HttpGet]
         [Route("get-selectedCountrys")]
-        public async Task<ActionResult<List<SelectedModel>>> GetSelectedCountry()
+        public async Task<ActionResult<List<SelectedModel>>> GetSelectedCountry(string tableName)
         {
             var Country = await _mediator.Send(new GetSelectedCountryRequest { });
             return Ok(Country);

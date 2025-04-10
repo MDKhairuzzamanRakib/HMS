@@ -16,6 +16,7 @@ namespace Hms.Application
         public const string CategoryType = HMSRoutePrefixBase + "categoryType";
         public const string Gender = HMSRoutePrefixBase + "gender";
         public const string Country = HMSRoutePrefixBase + "country";
+        public const string EmployeeType = HMSRoutePrefixBase + "employeeType";
 
         #endregion
 
