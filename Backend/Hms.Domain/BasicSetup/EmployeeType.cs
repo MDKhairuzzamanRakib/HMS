@@ -11,8 +11,8 @@ namespace Hms.Domain.BasicSetup
     public class EmployeeType : BaseDomainEntity
     {
         public int Id { get; set; }
-        public string? TypeName { get; set; }
-        public string? Description { get; set; }
+        public string Name { get; set; }
+        public string? Remark { get; set; }
         public int? Position { get; set; }
         public bool Status { get; set; }
 

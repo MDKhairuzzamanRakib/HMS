@@ -25,6 +25,9 @@ namespace Hms.Application.Profiles
             CreateMap<Gender, CreateCommonBasicSetupDto>().ReverseMap();
             CreateMap<Gender, CommonBasicSetupDto>().ReverseMap();
 
+            CreateMap<Country, CreateCommonBasicSetupDto>().ReverseMap();
+            CreateMap<Country, CommonBasicSetupDto>().ReverseMap();
+
             #endregion
 
             #region GuestInfo
