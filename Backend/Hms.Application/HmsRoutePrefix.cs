@@ -17,6 +17,7 @@ namespace Hms.Application
         public const string Gender = HMSRoutePrefixBase + "gender";
         public const string Country = HMSRoutePrefixBase + "country";
         public const string EmployeeType = HMSRoutePrefixBase + "employeeType";
+        public const string City = HMSRoutePrefixBase + "city";
 
         #endregion
 
