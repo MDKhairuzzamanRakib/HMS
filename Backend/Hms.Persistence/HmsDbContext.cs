@@ -77,6 +77,7 @@ namespace Hms.Persistence
             #region HotelInfos
             modelBuilder.ApplyConfiguration(new HotelFacilityConfiguration());
             modelBuilder.ApplyConfiguration(new HotelInfoConfiguration());
+            modelBuilder.ApplyConfiguration(new HotelImagesConfiguration());
             #endregion
 
             #region OrganogramSetup
@@ -148,6 +149,7 @@ namespace Hms.Persistence
         #region HotelInfos
         public virtual DbSet<HotelFacility> HotelFacility { get; set; } = null!;
         public virtual DbSet<HotelInfo> HotelInfo { get; set; } = null!;
+        public virtual DbSet<HotelImages> HotelImages { get; set; } = null!;
         #endregion
 
         #region OrganogramSetup
