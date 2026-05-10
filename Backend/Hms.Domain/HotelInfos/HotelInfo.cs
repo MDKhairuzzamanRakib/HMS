@@ -43,5 +43,6 @@ namespace Hms.Domain.HotelInfos
         public virtual ICollection<Section>? Section { get; set; }
         public virtual ICollection<Designation>? Designation { get; set; }
         public virtual ICollection<RoomInfo>? RoomInfo { get; set; }
+        public virtual ICollection<HotelImages>? HotelImages { get; set; }
     }
 }

@@ -17,7 +17,7 @@ import { DatePicker } from 'primeng/datepicker';
 import { from, Subscription } from 'rxjs';
 import { SelectedModel } from '../../../../core/models/selectedModel';
 import { Select } from 'primeng/select';
-import { GenderService } from '../../basic-setup/services/gender.service';
+import { GenderService } from '../../../backend/basic-setup/services/gender.service';
 
 @Component({
   selector: 'app-register',

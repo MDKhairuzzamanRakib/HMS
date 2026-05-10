@@ -7,7 +7,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Folder Include="DTOs\BasicSetup\" />
 		<Folder Include="DTOs\BookingInfos\" />
 		<Folder Include="DTOs\EmployeeInfos\" />
 		<Folder Include="DTOs\HotelInfos\" />

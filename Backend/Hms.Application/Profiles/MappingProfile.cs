@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Hms.Application.DTOs.BasicSetup.City;
 using Hms.Application.DTOs.Common.CommonBasicSetupDto;
 using Hms.Application.DTOs.GuestInfos;
 using Hms.Domain.BasicSetup;
@@ -24,6 +25,12 @@ namespace Hms.Application.Profiles
 
             CreateMap<Gender, CreateCommonBasicSetupDto>().ReverseMap();
             CreateMap<Gender, CommonBasicSetupDto>().ReverseMap();
+
+            CreateMap<Country, CreateCommonBasicSetupDto>().ReverseMap();
+            CreateMap<Country, CommonBasicSetupDto>().ReverseMap();
+
+            CreateMap<City, CreateCityDto>().ReverseMap();
+            CreateMap<City, CityDto>().ReverseMap();
 
             #endregion
 
